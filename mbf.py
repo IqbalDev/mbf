@@ -30,6 +30,7 @@ br.addheaders = [('User-Agent', 'Opera/9.80 (Android; Opera Mini/32.0.2254/85. U
 count = 0
 id_koncomu = []
 dados = []
+cekpoint = []
 
 def login():
     try:
@@ -37,8 +38,8 @@ def login():
         main()
     except (KeyError, IOError):
         print h+" LOGIN FACEBOOK BRO.."
-        user = str_raw(input(p+" Username :"))
-        passw = str_raw(input(p+" Password :"))
+        user = raw_input(p+" Username :")
+        passw = raw_input(p+" Password :")
         try:
             br.open('https://m.facebook.com')
         except mechanize.URLError:
