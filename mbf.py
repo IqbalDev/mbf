@@ -47,22 +47,22 @@ def login():
         lop = iqbalz_noobs.content
         bacot = json.loads(lop)
         if "session_key" in lop:
-                print " "
+        	        print " "
                 
 		        print h+"[+] Token Fb Anda adalah \033[91m=>\033[92m " + bacot["access_token"]
 		        open(id+"token.txt", 'a').write(bacot["access_token"])
 		        print " "
 		        print h+"        T O K E N  S U C C E S S "
-                print h+"                  T O D"
-                print p+" "
+			print h+"                  T O D"
+                	print p+" "
                 
-                print pu+" "
+            		print pu+" "
         else:
 	         	print m+"Login Gagal Cuk...."
 		        print " "
-                print m+" "
-                os.system("rm -f token.txt")
-                login()
+                	print m+" "
+                	os.system("rm -f token.txt")
+                	login()
             
 def akun():
     try:
