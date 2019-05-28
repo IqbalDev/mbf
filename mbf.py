@@ -22,7 +22,7 @@ else:
     except ImportError:
         os.system('pip2 install requests')
 reload(sys)
-sys.stdefaultencoding('utf8')
+sys.setdefaultencoding('utf8')
 br = mechanize.Browser()
 br.set_handle_robots(False)
 br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)
@@ -50,13 +50,14 @@ def login():
         	        print " "
                 
 		        print h+"[+] Token Fb Anda adalah \033[91m=>\033[92m " + bacot["access_token"]
-		        open(id+"token.txt", 'a').write(bacot["access_token"])
+		        open("token.txt", 'a').write(bacot["access_token"])
 		        print " "
 		        print h+"        T O K E N  S U C C E S S "
 			print h+"                  T O D"
                 	print p+" "
                 
-            		print pu+" "
+            		print p+" "
+			akun()
         else:
 	         	print m+"Login Gagal Cuk...."
 		        print " "
@@ -100,10 +101,10 @@ def id_konco():
                 id_koncomu.append(iq['id'])
                 simpan_id.write(iq["id"] + "\n")
                 print h+" Mengambil id"+ iq['name'] + iq['id']
-            print p+" Jumlah Id Yg Terambil %s" % len(id_koncomu)
-            print p+" File Disimpan Dengan Nama" + simpan_id
-            simpan_id.close()
-            mbf()
+                print p+" Jumlah Id Yg Terambil %s" % len(id_koncomu)
+                print p+" File Disimpan Dengan Nama" + simpan_id
+                simpan_id.close()
+                mbf()
         except IOError:
             print m+" Terjadi Kesalahan..."
 
