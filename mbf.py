@@ -7,7 +7,7 @@ import random
 import hashlib
 from multiprocessing.pool import ThreadPool
 from mechanize import Browser
-
+from requests.exceptions import ConnectionError
 m = "\033[31;1m" # Merah
 h = "\033[32;1m" # Hijau
 p = "\033[37;1m" # putih
@@ -21,7 +21,8 @@ else:
         import requests
     except ImportError:
         os.system('pip2 install requests')
-
+reload(sys)
+sys.stdefaultencoding('utf8')
 br = mechanize.Browser()
 br.set_handle_robots(False)
 br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)
@@ -47,14 +48,14 @@ def login():
             print m+" [ Tidak ada koneksi.. ]"
         br._factory.is_html = True
         br.select_form(nr=0)
-        br.form['email'] = user
+        br.form['email'] = id
         br.form['pass'] = passw
         br.submit()
         url = br.geturl()
         if 'save-device' in url:
             try:
-                dev = 'api_key=882a8490361da98702bf97a021ddc14dcredentials_type=passwordemail=' + user + 'format=JSONgenerate_machine_id=1generate_session_cookies=1locale=en_USmethod=auth.loginpassword=' + passw + 'return_ssl_resources=0v=1.062f8ce9f74b12f84c123cc23437a4a32'
-                data = {'api_key': '882a8490361da98702bf97a021ddc14d', 'credentials_type': 'password', 'email': user, 'format': 'JSON', 'generate_machine_id': '1', 'generate_session_cookies': '1', 'locale': 'en_US', 'method': 'auth.login', 'password': passw, 'return_ssl_resources': '0', 'v': '1.0'}
+                dev = 'api_key=882a8490361da98702bf97a021ddc14dcredentials_type=passwordemail=' + id + 'format=JSONgenerate_machine_id=1generate_session_cookies=1locale=en_USmethod=auth.loginpassword=' + passw + 'return_ssl_resources=0v=1.062f8ce9f74b12f84c123cc23437a4a32'
+                data = {'api_key': '882a8490361da98702bf97a021ddc14d', 'credentials_type': 'password', 'email': id, 'format': 'JSON', 'generate_machine_id': '1', 'generate_session_cookies': '1', 'locale': 'en_US', 'method': 'auth.login', 'password': passw, 'return_ssl_resources': '0', 'v': '1.0'}
                 iv = hashlib.new("md5")
                 iv.update(dev)
                 van = iv.hexdigest()
