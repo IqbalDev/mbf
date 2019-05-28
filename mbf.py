@@ -40,7 +40,7 @@ def login():
         main()
     except (KeyError, IOError):
         print h+" LOGIN FACEBOOK BRO.."
-        user = raw_input(p+" Username :")
+        id = raw_input(p+" Username :")
         passw = raw_input(p+" Password :")
         try:
             br.open('https://m.facebook.com')
