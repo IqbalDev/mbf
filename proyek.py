@@ -86,7 +86,7 @@ def mbfcrack():
                 else:
                     oradadi.append(user)
                     count += 1
-            sys.stdout.write(pu+ "\r [$]" + a + " Crack " + p + str(count) + h + " => " + p + str(len(baris)) + h + " => LIVE= " + str(len(dados)) + pu + " | " + k + "CEKPO= " + str(len(gagal)))
+            sys.stdout.write(pu+ "\r [$]" + a + " Crack " + p + str(len(baris)) + pu + " / " + p + str(count) + m + " []" + h + " LIVE = " + str(len(dados)) + pu + " | " + k + "CEKPO = " + str(len(gagal)))
             sys.stdout.flush()
 
     except IOError:
