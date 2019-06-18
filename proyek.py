@@ -95,10 +95,9 @@ def hasil_crack():
     print
 
     for ipal in dados:
-        print 
         print ipal
+        
     for ival in gagal:
-        print 
         print ival
 
     print 
