@@ -20,6 +20,27 @@ gagal = []
 oradadi = []
 threads = []
 
+def ival(nob):
+    color = {'d':90, 'm':91, 'h':92, 'k':93, 'b':94, 'p':95, 'a':96, 'pu':97}
+    for iv in color:
+        nob = nob.replace('\r%s'%iv, '\033[%s;1m'%color[iv])
+    nob += '\033[0m'
+    nob = nob.replace('\r0', '\033[0m')
+    print nob
+    
+def banner():
+    nob ('''\h
+                    .-.-..
+                   /+/++//
+                  /+/++//
+          *   *  /+/++//
+           \ /  |/__//
+         {X}v{X}|MBF|==========.
+           [']  /'|'\           \\
+               /  \  \           '
+               \_  \_ \_  
+     '''
+
 def mbf():
 
     global file_id, password
@@ -34,11 +55,11 @@ def mbf():
     else:
         os.system('clear')
         print
-        print pu+"+==============================+"
-        print a+"|       MULTI BRUTE FORCE      |"
-        print pu+"+==============================+"
-        file_id = raw_input(h+" [+] Masukkan File ID:" + k + " ")
-        password = raw_input(h+" [+] Masukkan Password:" + k + " ")
+        print pu+"  +==============================+"
+        print a+"  |       MULTI BRUTE FORCE      |"
+        print pu+"  +==============================+"
+        file_id = raw_input(pu+" [MBF]" + a + " Masukkan File ID" + p + ": ")
+        password = raw_input(pu+" [MBF]" + a + " Masukkan Password" + p + ": ")
         print
         try:
             listID = open(file_id, "r")
