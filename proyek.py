@@ -29,7 +29,7 @@ def ival(nob):
     print nob
     
 def banner():
-    nob ('''\h
+    ival ('''\rh
                     .-.-..
                    /+/++//
                   /+/++//
