@@ -4,6 +4,7 @@ import time
 import json
 import urllib
 import threading
+import requests
 
 d = "\033[90;1m"
 m = "\033[91;1m"
@@ -22,7 +23,7 @@ threads = []
 id_konco = []
 
 def ival(nob):
-    color = {'d':90, 'm':91, 'h':92, 'k':93, 'b':94, 'p':95, 'a':96, 'pu':97}
+    color = {'d':90, 'm':91, 'h':92, 'k':93, 'b':94, 'p':95, 'a':96, 'w':97}
     for iv in color:
         nob = nob.replace('\r%s'%iv, '\033[%s;1m'%color[iv])
     nob += '\033[0m'
@@ -40,15 +41,16 @@ def banner():
            [']  /'|'\           \\
                /  \  \           '
                \_  \_ \_  
-     \rwCreated by \raIqbal Dev''')
-     print pu+"  +==============================+"
-     print a+"  |       MULTI BRUTE FORCE      |"
-     print pu+"  +==============================+"
+     \rwCreated by \raIqbal Dev
+     \rw+==============================+
+     \ra|       MULTI BRUTE FORCE      |
+     \rw+==============================+''')
+     
 
 def login():
     banner()
-    user_name = raw_input(w+"  [log]" + a + " Username" + h + ":")
-    password = raw_input(w+"  [log]" + a + " Password" + h + ":")
+    user_name = raw_input(pu+"  [log]" + a + " Username" + h + ":")
+    password = raw_input(pu+"  [log]" + a + " Password" + h + ":")
     req = requests.get('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email='+user_name+'&locale=en_US&password='+password+'&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6')
     
     dev = req.content
@@ -56,14 +58,15 @@ def login():
     if "session_key" in dev:
         print h+" Berhasil Login..."
         open("token.txt", "w").write(jsl["access_token"])
-        id_teman()    
+        print h+" Login Sukses"
+        #id_teman()    
     else:
         print m+ " Gagal Login..."
 
 
 def id_teman():
     try:
-        token = open("token.txt", "r")
+        token = open("token.txt", "r").read()
     except IOError:
         print m+ " Tidak ada token..."
         os.system('rm -f token.txt')
