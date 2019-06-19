@@ -39,7 +39,7 @@ def banner():
            [']  /'|'\           \\
                /  \  \           '
                \_  \_ \_  
-     '''
+     ''')
 
 def mbf():
 
@@ -55,11 +55,12 @@ def mbf():
     else:
         os.system('clear')
         print
+        banner()
         print pu+"  +==============================+"
         print a+"  |       MULTI BRUTE FORCE      |"
         print pu+"  +==============================+"
-        file_id = raw_input(pu+" [MBF]" + a + " Masukkan File ID" + p + ": ")
-        password = raw_input(pu+" [MBF]" + a + " Masukkan Password" + p + ": ")
+        file_id = raw_input(h+"  [MBF]" + a + " Masukkan File ID" + p + ": ")
+        password = raw_input(h+"  [MBF]" + a + " Masukkan Password" + p + ": ")
         print
         try:
             listID = open(file_id, "r")
