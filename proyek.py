@@ -204,7 +204,7 @@ def sel():
 
     print m+ " Bosok => " + str(len(oradadi))
     print
-    
+    sys.exit()
         
 def main():
     login()
