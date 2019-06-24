@@ -64,7 +64,7 @@ def logout():
     try:
         iqbal = raw_input(h+" Keluar Dari Akun FB.. "+a+"[y/n]: ")
         if iqbal == "y" or iqbal == "yes":
-            print k+ " Keluar Dari Fb..."
+            print k+ " Keluar Dari Akun Fb..."
             os.system("rm -f token.txt")
         elif iqbal == "n" or iqbal == "not" or iqbal == "no":
             mbf()
@@ -156,8 +156,6 @@ def mbf():
     
         print
         banner()
-        logout()
-        banner()
         try:
             print h+"  [" +k+ "MBF" +h+ "]" + a + " Contoh" + p + " (sayang) "
             password = raw_input(h+"  [" +k+ "MBF" +h+ "]" + a + " Masukkan Password" + p + ": ")
@@ -227,6 +225,7 @@ def sel():
 
     print m+ " Bosok => " + str(len(oradadi))
     print
+    logout()
     sys.exit()
         
 def main():
