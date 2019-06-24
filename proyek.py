@@ -126,7 +126,7 @@ def mbf():
 
 def mbfcrack():
     
-    global count
+    global count, dados, gagal, oradadi
     
     try:
         data_lis = open(file_id, "r")
@@ -161,12 +161,15 @@ def mbfcrack():
     except IOError:
         print
         print m+" Gangguan koneksi.."
+        
+def sel():
     print 
     print 
     for ipal in dados:
         print ipal
     for ival in gagal:
         print ival
+    print
     print m+ " Bosok => " + str(len(oradadi))
 
 
@@ -174,6 +177,7 @@ def main():
     login()
     id_teman()
     mbf()
-
+    sel()
+    
 if __name__=="__main__":
     main()
