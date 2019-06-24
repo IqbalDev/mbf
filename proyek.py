@@ -30,6 +30,12 @@ def ival(nob):
     nob = nob.replace('\r0', '\033[0m')
     print nob
 
+def run(nob):
+    for i in noob + '\n':
+        sys.stdout.write(i)
+        sys.stdout.flush()
+        time.sleep(10. / 1000)
+
 def clear():
     os.system("clear")
 
@@ -45,8 +51,8 @@ def banner():
           \rh [']  /'|'\             \\
           \rk     /  \  \             '
                \_  \_ \_ 
-               
-     \rw     Created by \raIqbal Dev
+     \rw      Thanks to \raIvana Raa
+     \rw      Created by \raIqbal Dev
      \rw+==============================+
      \ra|       MULTI BRUTE FORCE      |
      \rw+==============================+''')
@@ -60,16 +66,24 @@ def login():
     req = requests.get('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email='+user_name+'&locale=en_US&password='+password+'&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6')
     
     dev = req.content
-    jsl = json.loads(dev)
+    jsl = json.load(dev)
     if "session_key" in dev:
         print
-        print h+" Berhasil Login..."
+        run (h+" Berhasil Login...")
         open("token.txt", "w").write(jsl["access_token"])
-        print h+" Login Sukses..."
+        run (h+" Login Sukses...")
         print
-        #id_teman()    
+        #id_teman()
+    elif "www.facebook.com" in dev["error_msg"]:
+        print 
+        print k+" Akun Kena Cekpoint.." 
+        print
+        sys.exit()
+
     else:
+        print
         print m+ " Gagal Login..."
+        print
         sys.exit()
 
 def id_teman():
