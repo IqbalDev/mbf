@@ -62,13 +62,15 @@ def banner():
 def logout():
     
     try:
-        iqbal = raw_input(h+" Keluar Dari Akun FB.. "+a+"[y/n]: ")
-        if iqbal == "y" or iqbal == "yes":
+        print k+" ["+pu+"1"+k+"]"+a+" Keluar Dari Program.."
+        print k+" ["+pu+"2"+k+"]"+a+" Keluar Dari Akun Facebook.."
+        iqbal = raw_input(h+" Pilih Salah Satu Bro.. "+a+"[1/2]: ")
+        if iqbal == "1":
+            print d+" Keluar Dari Program.."
+        elif iqbal == "2":
             print k+ " Keluar Dari Akun Fb..."
-            os.system("rm -f token.txt")
-        elif iqbal == "n" or iqbal == "not" or iqbal == "no":
-            mbf()
-            sel()
+            print h+ " Anda Harus Login Fb Lagi.."
+            os.system("rm -f token.txt") 
         else:
             print m+ "Pilih yg Bener Cuk.."
             logout()
