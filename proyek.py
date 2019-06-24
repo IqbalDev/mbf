@@ -30,7 +30,7 @@ def ival(nob):
     nob = nob.replace('\r0', '\033[0m')
     print nob
 
-def run(nob):
+def run(noob):
     for i in noob + '\n':
         sys.stdout.write(i)
         sys.stdout.flush()
