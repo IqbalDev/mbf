@@ -66,6 +66,7 @@ def login():
     try:
         token = open("token.txt", "r")
         mbf()
+        sel()
         
     except IOError, KeyError:
         
