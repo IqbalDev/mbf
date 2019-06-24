@@ -38,9 +38,10 @@ def banner():
           *   *  /+/++//
            \ /  |/___//
          {X}v{X}| MBF|>>>>>>>>>>+.
-          \rm [']  /'|'\             \\
+          \rh [']  /'|'\             \\
           \rk     /  \  \             '
-               \_  \_ \_  
+               \_  \_ \_ 
+               
      \rw     Created by \raIqbal Dev
      \rw+==============================+
      \ra|       MULTI BRUTE FORCE      |
@@ -56,9 +57,11 @@ def login():
     dev = req.content
     jsl = json.loads(dev)
     if "session_key" in dev:
+        print
         print h+" Berhasil Login..."
         open("token.txt", "w").write(jsl["access_token"])
-        print h+" Login Sukses"
+        print h+" Login Sukses..."
+        print
         #id_teman()    
     else:
         print m+ " Gagal Login..."
@@ -83,6 +86,7 @@ def id_teman():
                 sys.stdout.write("\r \033[95m [$]\033[92m Mengambil ID Teman \033[97m=> " + str(len(data_id)))
                 sys.stdout.flush()
             simpan_id.close()
+            print
             print a+"\n  ID Tersimpan " + p + "(" + pu + "id.txt" + p + ")" 
             print 
             raw_input(h+"[ "+p+"Lanjutkan Bos.."+h+" ]\n")
@@ -172,6 +176,22 @@ def sel():
         print ival
     print
     print m+ " Bosok => " + str(len(oradadi))
+    print
+    pilih()
+
+def pilih():
+    try:
+        lagi = (h+" [?]" +pu+ " Cracking Lagi?" +a+ " [y/n]: " +k+ "")
+        if lagi == "y" or lagi == "yes" or lagi == "lagi":
+            mbf()
+        else:
+            print 
+            print m+" Pilih Yg bener Cuk..."
+            pilih()
+    except KeyboardInterrupt:
+        print
+        print w+ " Keluar Dari Program.."
+        sys.exit()
 
 
 def main():
