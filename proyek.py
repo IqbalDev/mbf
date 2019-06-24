@@ -62,31 +62,38 @@ def banner():
     
 
 def login():
-    banner()
-    user_name = raw_input(p+"  [log]" + a + " Username" + k + ": ")
-    password = raw_input(p+"  [log]" + a + " Password" + k + ": ")
-    req = requests.get('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email='+user_name+'&locale=en_US&password='+password+'&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6')
     
-    dev = req.content
-    jsl = json.loads(dev)
-    if "session_key" in dev:
-        print
-        run (h+" Berhasil Login"+ pu +".........")
-        open("token.txt", "w").write(jsl["access_token"])
-        run (h+" Login Sukses" +pu+".........")
-        print
-        id_teman()
-    elif "error_msg" in dev:
-        print 
-        print k+" Akun Kena Cekpoint.." 
-        print
-        sys.exit()
+    try:
+        token = open("token.txt", "r")
+        mbf()
+        
+    except IOError, KeyError:
+        
+        banner()
+        user_name = raw_input(p+"  [log]" + a + " Username" + k + ": ")
+        password = raw_input(p+"  [log]" + a + " Password" + k + ": ")
+        req = requests.get('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email='+user_name+'&locale=en_US&password='+password+'&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6')
+    
+        dev = req.content
+        jsl = json.loads(dev)
+        if "session_key" in dev:
+            print
+            run (h+" Berhasil Login"+ pu +".........")
+            open("token.txt", "w").write(jsl["access_token"])
+            run (h+" Login Sukses" +pu+".........")
+            print
+            id_teman()
+        elif "error_msg" in dev:
+            print 
+            print k+" Akun Kena Cekpoint.." 
+            print
+            sys.exit()
 
-    else:
-        print
-        print m+ " Gagal Login..."
-        print
-        sys.exit()
+        else:
+            print
+            print m+ " Gagal Login..."
+            print
+            sys.exit()
 
 def id_teman():
     try:
@@ -203,10 +210,11 @@ def pilih():
     try:
         lagi = raw_input(h+" [?]" +pu+ " Cracking Lagi?" +a+ " [y/n]: " +k+ "")
         if lagi == "y" or lagi == "yes" or lagi == "lagi":
-            mbf()
-            sel()
+            main()
+            
         elif lagi == "n" or lagi == "no" or lagi == "tidak":
             sys.exit()
+            
         else:
             print 
             print m+" Pilih Yg bener Cuk..."
