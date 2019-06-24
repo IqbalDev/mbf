@@ -168,19 +168,7 @@ def mbfcrack():
         print m+" Gangguan koneksi.."
 
         
-def pilih():
-    try:
-        lagi = (h+" [?]" +pu+ " Cracking Lagi?" +a+ " [y/n]: " +k+ "")
-        if lagi in "y" or lagi == "yes":
-            mbf()
-        else:
-            print 
-            print m+" Pilih Yg bener Cuk..."
-            pilih()
-    except KeyboardInterrupt:
-        print
-        print w+ " Keluar Dari Program.."
-        sys.exit()
+
 
 
 def sel():
@@ -193,7 +181,7 @@ def sel():
     print
     print m+ " Bosok => " + str(len(oradadi))
     print
-    pilih()
+    
 
 
 def main():
