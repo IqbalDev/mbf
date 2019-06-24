@@ -143,7 +143,7 @@ def mbf():
         password = raw_input(h+"  [" +k+ "MBF" +h+ "]" + a + " Masukkan Password" + p + ": ")
         print
         try:
-            listID = open(file_id, "r")
+            listID = open('id.txt', "r")
             for ival in range(30):
                 iqbal = threading.Thread(target=mbfcrack, args=())
                 iqbal.start()
