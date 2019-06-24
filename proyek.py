@@ -75,7 +75,7 @@ def login():
         run (h+" Login Sukses...")
         print
         #id_teman()
-    elif "www.facebook.com" in dev["error_msg"]:
+    elif "error_msg" in dev:
         print 
         print k+" Akun Kena Cekpoint.." 
         print
