@@ -80,12 +80,12 @@ def id_teman():
                 id_konco.append(ival['id'])
                 simpan_id.write(ival['id'] + "\n")
                 data_id = open("id.txt", 'r').read().split()
-                sys.stdout.write("\r \033[95m [$]\033[92m Mengambil ID Teman \033[97m=> " + str(len(data_id)) 
+                sys.stdout.write("\r \033[95m [$]\033[92m Mengambil ID Teman \033[97m=> " + str(len(data_id)))
                 sys.stdout.flush()
             simpan_id.close()
-            print a+"  ID Tersimpan " + p + "(" + w + "id.txt" + p + ")" 
+            print a+"  ID Tersimpan " + p + "(" + pu + "id.txt" + p + ")" 
             print 
-            raw_input(h+"["+w+"Lanjutkan Bos.."+h+"]\n")
+            raw_input(h+"["+p+"Lanjutkan Bos.."+h+"]\n")
 
         except IOError:
             print m+" Terjadi kesalahan..."
@@ -165,7 +165,7 @@ def mbfcrack():
         print ipal
     for ival in gagal:
         print ival
-    print m+ " Bosok => "str(len(oradadi))
+    print m+ " Bosok => " + str(len(oradadi))
 
 
 def main():
