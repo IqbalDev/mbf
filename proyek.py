@@ -126,7 +126,7 @@ def id_teman():
 
 def mbf():
 
-    global file_id, password
+    global password
     global listID
 
     try:
@@ -140,7 +140,6 @@ def mbf():
     
         print
         banner()
-        file_id = open('id.txt', 'r')
         password = raw_input(h+"  [" +k+ "MBF" +h+ "]" + a + " Masukkan Password" + p + ": ")
         print
         try:
@@ -163,7 +162,7 @@ def mbfcrack():
     global count, dados, gagal, oradadi, baris
     
     try:
-        data_lis = open(file_id, "r")
+        data_lis = open('id.txt', "r")
         baris = data_lis.read().split()
         while listID:
             user = listID.readline().strip()
