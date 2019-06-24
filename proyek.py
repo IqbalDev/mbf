@@ -59,7 +59,22 @@ def banner():
            \rwCreated by \raIqbal Dev
         \rd==========================''')
 
+def logout():
     
+    try:
+        iqbal = raw_input(h+" Keluar Dari Akun FB.. "+a+"[y/n]: ")
+        if iqbal == "y" or iqbal == "yes":
+            print k+ " Keluar Dari Fb..."
+            os.system("rm -f token.txt")
+        elif iqbal == "n" or iqbal == "not" or iqbal == "no":
+            mbf()
+            sel()
+        else:
+            print m+ "Pilih yg Bener Cuk.."
+            logout()
+            
+    except KeyboardInterrupt:
+        sys.exit()
 
 def login():
     
@@ -141,24 +156,31 @@ def mbf():
     
         print
         banner()
-        print h+"  [" +k+ "MBF" +h+ "]" + a + " Contoh" + p + "(sayang) "
-        password = raw_input(h+"  [" +k+ "MBF" +h+ "]" + a + " Masukkan Password" + p + ": ")
-        print
+        logout()
+        banner()
         try:
-            listID = open('id.txt', "r")
-            for ival in range(30):
-                iqbal = threading.Thread(target=mbfcrack, args=())
-                iqbal.start()
-                threads.append(iqbal)
-
-            for ipal in threads:
-                ipal.join()
-
-        except IOError:
+            print h+"  [" +k+ "MBF" +h+ "]" + a + " Contoh" + p + " (sayang) "
+            password = raw_input(h+"  [" +k+ "MBF" +h+ "]" + a + " Masukkan Password" + p + ": ")
             print
-            print m+" Tidak Ada File Yang Ditemukan.."
+            try:
+                listID = open('id.txt', "r")
+                for ival in range(30):
+                    iqbal = threading.Thread(target=mbfcrack, args=())
+                    iqbal.start()
+                    threads.append(iqbal)
 
+                for ipal in threads:
+                    ipal.join()
 
+            except IOError:
+                print
+                print m+" Tidak Ada File Yang Ditemukan.."
+
+        except KeyboardInterrupt:
+            print
+            print d+ " Keluar Dari Program"
+            sys.exit()
+            
 def mbfcrack():
     
     global count, dados, gagal, oradadi, baris
