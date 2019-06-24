@@ -29,8 +29,12 @@ def ival(nob):
     nob += '\033[0m'
     nob = nob.replace('\r0', '\033[0m')
     print nob
-    
+
+def clear():
+    os.system("clear")
+
 def banner():
+    clear()
     ival ('''\ra
                     .-.-..
                    /+/++//
@@ -46,7 +50,8 @@ def banner():
      \rw+==============================+
      \ra|       MULTI BRUTE FORCE      |
      \rw+==============================+''')
-     
+
+    
 
 def login():
     banner()
@@ -107,11 +112,11 @@ def mbf():
         print m+" Token Tidak Ada"
         os.system("rm -f token.txt")
     else:
-        os.system('clear')
+    
         print
         banner()
-        file_id = raw_input(h+"  [MBF]" + a + " Masukkan File ID" + p + ": ")
-        password = raw_input(h+"  [MBF]" + a + " Masukkan Password" + p + ": ")
+        file_id = raw_input(h+"  [" +k+ "MBF" +h+ "]" + a + " Masukkan File ID" + p + ": ")
+        password = raw_input(h+"  [" +k+ "MBF" +h+ "]" + a + " Masukkan Password" + p + ": ")
         print
         try:
             listID = open(file_id, "r")
