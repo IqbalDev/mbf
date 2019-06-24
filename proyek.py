@@ -140,6 +140,7 @@ def mbf():
     
         print
         banner()
+        print h+"  [" +k+ "MBF" +h+ "]" + a + " Contoh" + p + "(sayang) "
         password = raw_input(h+"  [" +k+ "MBF" +h+ "]" + a + " Masukkan Password" + p + ": ")
         print
         try:
@@ -204,24 +205,6 @@ def sel():
     print m+ " Bosok => " + str(len(oradadi))
     print
     
-
-def pilih():
-    try:
-        lagi = raw_input(h+" [?]" +pu+ " Cracking Lagi?" +a+ " [y/n]: " +k+ "")
-        if lagi == "y" or lagi == "yes" or lagi == "lagi":
-            main()
-            
-        elif lagi == "n" or lagi == "no" or lagi == "tidak":
-            sys.exit()
-            
-        else:
-            print 
-            print m+" Pilih Yg bener Cuk..."
-            pilih()
-    except KeyboardInterrupt:
-        print
-        print w+ " Keluar Dari Program.."
-        sys.exit()
         
 def main():
     login()
