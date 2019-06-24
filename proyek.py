@@ -56,7 +56,8 @@ def banner():
      \ra|       MULTI BRUTE FORCE      |
      \rw+==============================+
            \rwThanks to \raIvana Raa/
-           \rwCreated by \raIqbal Dev''')
+           \rwCreated by \raIqbal Dev
+           \rd==========================''')
 
     
 
