@@ -65,7 +65,7 @@ def login():
         #id_teman()    
     else:
         print m+ " Gagal Login..."
-
+        sys.exit()
 
 def id_teman():
     try:
@@ -168,6 +168,20 @@ def mbfcrack():
         print m+" Gangguan koneksi.."
 
         
+def pilih():
+    try:
+        lagi = raw_input(h+" [?]" +pu+ " Cracking Lagi?" +a+ " [y/n]: " +k+ "")
+        if lagi == "y" or lagi == "yes" or lagi == "lagi":
+            mbf()
+        else:
+            print 
+            print m+" Pilih Yg bener Cuk..."
+            pilih()
+    except KeyboardInterrupt:
+        print
+        print w+ " Keluar Dari Program.."
+        sys.exit()
+
 
 
 
@@ -179,9 +193,10 @@ def sel():
     for ival in gagal:
         print ival
     print
+
     print m+ " Bosok => " + str(len(oradadi))
     print
-    
+    pilih()
 
 
 def main():
