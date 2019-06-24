@@ -71,9 +71,9 @@ def login():
     jsl = json.loads(dev)
     if "session_key" in dev:
         print
-        run (h+" Berhasil Login"+ pu +"..............")
+        run (h+" Berhasil Login"+ pu +".........")
         open("token.txt", "w").write(jsl["access_token"])
-        run (h+" Login Sukses" +pu+"...............")
+        run (h+" Login Sukses" +pu+".........")
         print
         id_teman()
     elif "error_msg" in dev:
@@ -185,26 +185,7 @@ def mbfcrack():
         print
         print m+" Gangguan koneksi.."
 
-        
-def pilih():
-    try:
-        lagi = raw_input(h+" [?]" +pu+ " Cracking Lagi?" +a+ " [y/n]: " +k+ "")
-        if lagi == "y" or lagi == "yes" or lagi == "lagi":
-            mbf()
-        elif lagi == "n" or lagi == "no" or lagi == "tidak":
-            sys.exit()
-        else:
-            print 
-            print m+" Pilih Yg bener Cuk..."
-            pilih()
-    except KeyboardInterrupt:
-        print
-        print w+ " Keluar Dari Program.."
-        sys.exit()
-
-
-
-
+       
 def sel():
     print 
     print 
@@ -218,7 +199,23 @@ def sel():
     print
     pilih()
 
-
+def pilih():
+    try:
+        lagi = raw_input(h+" [?]" +pu+ " Cracking Lagi?" +a+ " [y/n]: " +k+ "")
+        if lagi == "y" or lagi == "yes" or lagi == "lagi":
+            mbf()
+            sel()
+        elif lagi == "n" or lagi == "no" or lagi == "tidak":
+            sys.exit()
+        else:
+            print 
+            print m+" Pilih Yg bener Cuk..."
+            pilih()
+    except KeyboardInterrupt:
+        print
+        print w+ " Keluar Dari Program.."
+        sys.exit()
+        
 def main():
     login()
     mbf()
