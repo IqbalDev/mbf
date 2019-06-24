@@ -126,7 +126,7 @@ def mbf():
 
 def mbfcrack():
     
-    global count, dados, gagal, oradadi
+    global count, dados, gagal, oradadi, baris
     
     try:
         data_lis = open(file_id, "r")
