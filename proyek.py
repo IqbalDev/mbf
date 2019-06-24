@@ -71,11 +71,11 @@ def login():
     jsl = json.loads(dev)
     if "session_key" in dev:
         print
-        run (h+" Berhasil Login...")
+        run (h+" Berhasil Login"+ pu +"..............")
         open("token.txt", "w").write(jsl["access_token"])
-        run (h+" Login Sukses...")
+        run (h+" Login Sukses" +pu+"...............")
         print
-        #id_teman()
+        id_teman()
     elif "error_msg" in dev:
         print 
         print k+" Akun Kena Cekpoint.." 
@@ -112,7 +112,7 @@ def id_teman():
             print 
             print (h+" [ "+p+"Lanjutkan Bos.."+h+" ]\n")
             raw_input(k+ " => ")
-
+            
         except IOError:
             print m+" Terjadi kesalahan..."
 
@@ -128,6 +128,7 @@ def mbf():
         print
         print m+" Token Tidak Ada"
         os.system("rm -f token.txt")
+        login()
     else:
     
         print
@@ -220,7 +221,6 @@ def sel():
 
 def main():
     login()
-    id_teman()
     mbf()
     sel()
     
