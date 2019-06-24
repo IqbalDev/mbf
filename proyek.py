@@ -140,7 +140,7 @@ def mbf():
     
         print
         banner()
-        file_id = raw_input(h+"  [" +k+ "MBF" +h+ "]" + a + " Masukkan File ID" + p + ": ")
+        file_id = open('id.txt', 'r')
         password = raw_input(h+"  [" +k+ "MBF" +h+ "]" + a + " Masukkan Password" + p + ": ")
         print
         try:
@@ -204,7 +204,7 @@ def sel():
 
     print m+ " Bosok => " + str(len(oradadi))
     print
-    pilih()
+    
 
 def pilih():
     try:
