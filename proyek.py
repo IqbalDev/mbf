@@ -83,9 +83,9 @@ def id_teman():
                 sys.stdout.write("\r \033[95m [$]\033[92m Mengambil ID Teman \033[97m=> " + str(len(data_id)))
                 sys.stdout.flush()
             simpan_id.close()
-            print a+"  ID Tersimpan " + p + "(" + pu + "id.txt" + p + ")" 
+            print a+"\n  ID Tersimpan " + p + "(" + pu + "id.txt" + p + ")" 
             print 
-            raw_input(h+"["+p+"Lanjutkan Bos.."+h+"]\n")
+            raw_input(h+"[ "+p+"Lanjutkan Bos.."+h+" ]\n")
 
         except IOError:
             print m+" Terjadi kesalahan..."
