@@ -53,7 +53,7 @@ def id_batir():
             sys.exit()
 
     
-def iqbalsup(arg):
+def main(arg):
     id_teman = arg
     try:
         token = open("token.txt", "r").read()
@@ -93,14 +93,14 @@ def iqbalsup(arg):
             pass
    
         
-    noob = ThreadPool(30)
-    noob.map(iqbalsup, id)
+    nob = ThreadPool(30)
+    noob.map(main, id)
     print "selesai"                    
 
 def main():
     login()
     id_batir()
-    iqbalsup()
+    
 
 if __name__=="__main__":
     main()
