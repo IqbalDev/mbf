@@ -5,6 +5,8 @@ import time
 import json
 import urllib
 
+id_teman = []
+
 def login():
 
     try:
@@ -30,7 +32,7 @@ def login():
     except KeyboardInterrupt:
         sys.exit()
 
-def id_teman():
+def id_batir():
     global id_teman
     try:
         token = open("token.txt", "r").read()
@@ -44,7 +46,7 @@ def id_teman():
             data_id = open('id.txt', 'w')
             for iqbal in jsl['data']:
                 id_teman.append(iqbal['id'])
-                data_id.write(iqbal['id'])
+                data_id.write(iqbal['id'] + '\n')
 
         except IOError:
             sys.exit()
@@ -94,7 +96,7 @@ def iqbalsup():
 
 def main():
     login()
-    id_teman()
+    id_batir()
     iqbalsup()
 
 if __name__=="__main__":
