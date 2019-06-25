@@ -4,7 +4,7 @@ import requests
 import time
 import json
 import urllib
-import ThreadPool
+from multiprocessing.pool import ThreadPool
 
 id = []
 
