@@ -48,8 +48,8 @@ def banner():
                     .-.-..
                    /+/++//
                   /+/++//
-        \rp  *   *  /+/++//
-        \rp   \ /  |/___//
+        \rp  *   * \ra /+/++//
+        \rp   \ / \ra |/___//
         \rw {X}v{X}| MBF|>>>>>>>>>>+.
           \rh [']  /'|'\             \\
           \rk     /  \  \             '
@@ -59,8 +59,8 @@ def banner():
      \ra|       MULTI BRUTE FORCE      |
      \rw+==============================+ 
         \rd==========================
-          \rp[\rwCreated by \raIqbal Dev\rp]
-          \rp[\rwThanks to \raIvana Raa/\rp]
+         \rp[ \rwCreated by \raIqbal Dev\rp ]
+         \rp[ \rwThanks to \raIvana Raa/\rp ]
         \rd==========================''')
 
 def logout():
@@ -173,6 +173,7 @@ def mbf():
             dev = json.loads(iqbal_name.text)
             nama = dev['name']
             print h+"  []" + a + " Selamat Datang " + pu + nama + "\033[92m :)"
+            print d+"  ==========================
             password = raw_input(h+"  [" +k+ "MBF" +h+ "]" + a + " Cracking Password" + p + ": ")
             print
             try:
