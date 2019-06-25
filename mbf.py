@@ -4,8 +4,9 @@ import requests
 import time
 import json
 import urllib
+import ThreadPool
 
-id_teman = []
+id = []
 
 def login():
 
@@ -33,7 +34,7 @@ def login():
         sys.exit()
 
 def id_batir():
-    global id_teman
+    global 
     try:
         token = open("token.txt", "r").read()
     except IOError:
@@ -45,14 +46,15 @@ def id_batir():
             jsl = json.loads(url.text)
             data_id = open('id.txt', 'w')
             for iqbal in jsl['data']:
-                id_teman.append(iqbal['id'])
-                data_id.write(iqbal['id'] + '\n')
+                id.append(iqbal['id'])
+                id.write(iqbal['id'] + '\n')
 
         except IOError:
             sys.exit()
 
     
-def iqbalsup():
+def iqbalsup(arg):
+    id_teman = arg
     try:
         token = open("token.txt", "r").read()
     except IOError:
@@ -91,7 +93,8 @@ def iqbalsup():
             pass
    
         
-
+    noob = ThreadPool(30)
+    noob.map(iqbalsup, id)
     print "selesai"                    
 
 def main():
