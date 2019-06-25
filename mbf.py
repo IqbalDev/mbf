@@ -89,8 +89,8 @@ def supe_iqbal():
                             if "www.facebook.com" in jsl_iqbal["error_msg"]:
                                 print " [CP] " + id_teman + " | " + sandi3
 
-            except:
-                pass
+        except:
+            pass
    
         
     noob = ThreadPool(30)
