@@ -48,7 +48,7 @@ def id_batir():
             data_id = open('id.txt', 'w')
             for iqbal in jsl['data']:
                 id.append(iqbal['id'])
-                id.write(iqbal['id'] + '\n')
+       
 
         except IOError:
             sys.exit()
