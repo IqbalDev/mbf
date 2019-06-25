@@ -168,6 +168,7 @@ def mbf():
         print
         banner()
         try:
+            token = open("token.txt", "r").read()
             iqbal_name = requests.get("https://graph.facebook.com/me?access_token=" + token)
             dev = json.loads(iqbal_name.text)
             nama = dev['name']
