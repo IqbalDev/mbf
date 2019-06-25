@@ -50,7 +50,7 @@ def banner():
                   /+/++//
         \rp  *   *  /+/++//
         \rp   \ /  |/___//
-         {X}v{X}| MBF|>>>>>>>>>>+.
+        \rw {X}v{X}| MBF|>>>>>>>>>>+.
           \rh [']  /'|'\             \\
           \rk     /  \  \             '
                \_  \_ \_ 
@@ -59,8 +59,8 @@ def banner():
      \ra|       MULTI BRUTE FORCE      |
      \rw+==============================+ 
         \rd==========================
-          \rp[Created by \raIqbal Dev\rp]
-          \rp[Thanks to \raIvana Raa/\rp]
+          \rp[\rwCreated by \raIqbal Dev\rp]
+          \rp[\rwThanks to \raIvana Raa/\rp]
         \rd==========================''')
 
 def logout():
@@ -172,7 +172,7 @@ def mbf():
             iqbal_name = requests.get("https://graph.facebook.com/me?access_token=" + token)
             dev = json.loads(iqbal_name.text)
             nama = dev['name']
-            print h+"  [" +p+ "Name" +h+ "]" + a + " Selamat Datang " + pu + nama + "\033[92m :)"
+            print h+"  []" + a + " Selamat Datang " + pu + nama + "\033[92m :)"
             password = raw_input(h+"  [" +k+ "MBF" +h+ "]" + a + " Cracking Password" + p + ": ")
             print
             try:
