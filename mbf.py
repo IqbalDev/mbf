@@ -17,11 +17,11 @@ def login():
         password = raw_input(" Password: ")
         url = requests.get("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email="+user+"&locale=en_US&password="+password+"&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
         dev = url.content
-        jas = json.loads(dev)
+        jsl = json.loads(dev)
         if "session_key" in dev:
             print "login Berhasil..."
-            token = open('token.txt', 'w').write(jsl['access_token'])
-            token.close()
+            open('token.txt', 'w').write(jsl['access_token'])
+            
         elif "error_msg" in dev:
             print " Akun Kena Cekpoint"
         else:
@@ -41,13 +41,15 @@ def id_teman():
         try:
             url = requests.get("https://graph.facebook.com/me/friends?access_token="+ token)
             jsl = json.loads(url.text)
+            data_id = open('id.txt', 'w')
             for iqbal in jsl['data']:
                 id_teman.append(iqbal['id'])
+                data_id.write(iqbal['id'])
 
         except IOError:
             sys.exit()
 
-    except 
+    
 def iqbalsup():
     try:
         token = open("token.txt", "r").read()
@@ -85,8 +87,8 @@ def iqbalsup():
 
         except:
             pass
-    except KeyboardInterrupt:
-        sys.exit()
+   
+        
 
     print "selesai"                    
 
