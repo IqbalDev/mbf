@@ -50,7 +50,7 @@ def banner():
                   /+/++//
         \rp  *   * \ra /+/++//
         \rp   \ / \ra |/___//
-        \rw {X}v{X}| MBF|>>>>>>>>>>+.
+        \rw {X}v{X}| MBF|\ra>>>>>>>>>>+.
           \rh [']  /'|'\             \\
           \rk     /  \  \             '
                \_  \_ \_ 
@@ -173,7 +173,7 @@ def mbf():
             dev = json.loads(iqbal_name.text)
             nama = dev['name']
             print h+"  []" + a + " Selamat Datang " + pu + nama + "\033[92m :)"
-            print d+"  =========================="
+            print d+"  ===================================="
             password = raw_input(h+"  [" +k+ "MBF" +h+ "]" + a + " Cracking Password" + p + ": ")
             print
             try:
