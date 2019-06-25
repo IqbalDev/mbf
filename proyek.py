@@ -57,7 +57,8 @@ def banner():
     
      \rw+==============================+
      \ra|       MULTI BRUTE FORCE      |
-     \rw+==============================+          
+     \rw+==============================+ 
+        \rd==========================
            \rwCreated by \raIqbal Dev
            \rwThanks to \raIvana Raa/
         \rd==========================''')
@@ -67,7 +68,7 @@ def logout():
     try:
         print k+" ["+pu+"1"+k+"]"+a+" Keluar Dari Program.."
         print k+" ["+pu+"2"+k+"]"+a+" Keluar Dari Akun Facebook.."
-        iqbal = raw_input(p+" [?]"+h+" Pilih Salah Satu.. "+a+"[ 1 / 2 ]: ")
+        iqbal = raw_input(p+" [?]"+h+" Pilih Salah Satu.. "+a+"["+pu+" 1 / 2"+a+" ]: ")
         if iqbal == "1":
             print d+" Keluar Dari Program.."
         elif iqbal == "2":
@@ -91,8 +92,8 @@ def login():
     except IOError, KeyError:
         
         banner()
-        user_name = raw_input(p+"  [log]" + a + " Username" + d + ": ")
-        password = raw_input(p+"  [log]" + a + " Password" + d + ": ")
+        user_name = raw_input(p+"  ["+h+"+log"+p+"]" + a + " Username" + pu + ": ")
+        password = raw_input(p+"  ["+h+"log"+p+"]" + a + " Password" + d + ": ")
         req = requests.get('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email='+user_name+'&locale=en_US&password='+password+'&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6')
     
         dev = req.content
@@ -215,7 +216,7 @@ def iqbaldevmbf():
                 oradadi.append(user)
                 count += 1
         
-            sys.stdout.write(pu+ "\r [$]" + a + " Cracking " + p + str(len(baris)) + pu + " / " + p + str(count) + m + " [ " + h + str(len(dados)) + pu + " / " + k + str(len(gagal)) + m + " ]" + h + "Semoga beruntung :)")
+            sys.stdout.write(pu+ "\r [$]" + a + " Cracking " + p + str(len(baris)) + pu + " / " + p + str(count) + m + " [ " + h + str(len(dados)) + pu + " / " + k + str(len(gagal)) + m + " ]")
             sys.stdout.flush()
         
 
