@@ -177,14 +177,11 @@ def mbf():
             password = raw_input(h+"  [" +k+ "MBF" +h+ "]" + a + " Cracking Password" + p + ": ")
             if password == "":
                 print m+" Jangan Kosong Cuk.."
-                time.sleep(1)
-                mbf()
-                sel()
+                sys.exit()
+                
             if password == " ":
                 print m+" Jangan Kosong Cuk.."
-                time.sleep(1)
-                mbf()
-                sel()
+                sys.exit()
                 
             print
             try:
