@@ -23,7 +23,7 @@ def login():
             open("token.txt", "w").write(jsl["access_token"])
             informasi()
         
-        elif "error_msg" in dev:
+        elif "www.facebook.com" in jsl["error_msg"]:
             print " Akun Kena Cekpoint.."
             os.system("rm -rf token.txt")
         else:
