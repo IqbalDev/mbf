@@ -175,10 +175,17 @@ def mbf():
             print h+"  []" + a + " Selamat Datang " + pu + nama + "\033[92m :)"
             print d+"  ======================================"
             password = raw_input(h+"  [" +k+ "MBF" +h+ "]" + a + " Cracking Password" + p + ": ")
-            if password == " ":
+            if password == "":
                 print m+" Jangan Kosong Cuk.."
+                time.sleep(1)
                 mbf()
                 sel()
+            if password == " ":
+                print m+" Jangan Kosong Cuk.."
+                time.sleep(1)
+                mbf()
+                sel()
+                
             print
             try:
                 listID = open('id.txt', "r")
