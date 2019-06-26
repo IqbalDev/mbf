@@ -14,7 +14,7 @@ def login():
     jsl = json.loads(dev)
     if "session_key" in dev:
         print " Login Sukses.."
-        open("token", "w").write(jsl["access_token"])
+        open("token.txt", "w").write(jsl["access_token"])
         informasi()
         
     elif "error_msg" in dev:
@@ -35,13 +35,23 @@ def informasi():
             dev = json.loads(url.text)
             try:
                 print " Mama: " + dev['name']
-            except IOError:
+            except KeyError:
                 print " Tidak Ada"
             else:
                 try:
                     print " Email : " + dev['email']
-                except IOError:
+                except KeyError:
                     print " Tidak Ada"
+                else:
+                    try:
+                        print " No HP: " + dev["mobile_phone"]
+                    except Keyerror:
+                        print " Tidak Ada"
+                    else:
+                        try:
+                            print " Tanggal Lahir: " + dev["birthday"]
+                        except KeyError:
+                            print " Tidak Ada"
         
         except KeyboardInterrupt:
             sys.exit()
