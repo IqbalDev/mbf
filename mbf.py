@@ -9,12 +9,10 @@ import requests
 def login():
     try:
         token = open("token.txt", "r")
+        informasi()
         
     except IOError:
-        print " Tidak Ada Token.."
-        os.system("rm -rf token.txt")
-    
-    else:
+        print " Login Dulu Bos..."
         user = raw_input(" Masukkan Username: ")
         password = raw_input(" Masukkan Password: ")
         url = requests.get("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email="+user+"&locale=en_US&password="+password+"&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
@@ -56,7 +54,7 @@ def informasi():
                 
             try:
                 print " No HP: " + dev["mobile_phone"]
-            except Keyerror:
+            except KeyError:
                 print " NO hp Tidak Ada"
                    
             try:
