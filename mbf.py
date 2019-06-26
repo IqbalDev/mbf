@@ -64,6 +64,27 @@ def informasi():
         
         except KeyboardInterrupt:
             sys.exit()
+    word()
+    
+def word():
+    try:
+        token = open("token.txt", "r").read()
+    except IOError:
+        print " Tidak Ada Token ..."
+    else:
+        try:
+            target = raw_input(" Masukkan ID Target: ")
+            url = requests.get("https://graph.facebook.com/" + target + "?access_token=" + token)
+            dev = json.loads(url.text)
+            nama1 = dev["first_name"] + "123\n"
+            nama2 = dev["last_name"] + "123\n"
+            nama3 = dev["first_name"] + "12345\n"
+            nama4 = dev["last_name"] + "12345\n"
+            birth = dev["birthday"]
+            tgl = birth.replace("/", "")  
+            print nama1 + nama2 + nama3 + tgl     
+        except KeyboardInterrupt:
+            sys.exit()
 
 def main():
     login()
