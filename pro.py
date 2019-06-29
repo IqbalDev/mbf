@@ -206,7 +206,7 @@ def mbf():
             
 def iqbaldevmbf():
     
-    global count, dados1, dados2, gagal, oradadi, baris,
+    global count, dados1, dados2, gagal, oradadi, baris
     
     try:
         data_lis = open('id.txt', "r")
