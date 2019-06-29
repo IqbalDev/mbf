@@ -225,7 +225,8 @@ def iqbaldevmbf():
            
             elif "www.facebook.com" in jsl["error_msg"]:
                 
-                dadi = open("sukses.txt", "w").writeline()
+                dadi = open("sukses.txt", "w")
+                dadi.write(user + '\n')
                 dadi.close()
                 count += 1
                 
