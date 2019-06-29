@@ -211,6 +211,7 @@ def iqbaldevmbf():
         data_lis = open('id.txt', "r")
         baris = data_lis.read().split()
         while listID:
+            token = open("token.txt", "r").read()
             user = listID.readline().strip()
             iqbal = requests.get("https://graph.facebook.com/" + user + "?access_token=" + token)
             ival = json.loads(iqbal.text)
