@@ -128,9 +128,8 @@ def id_teman():
 
     else:
         try:
-            req = requests.get('https://graph.facebook.com/me/friends?access_token=' + token)
+            req = requests.get('https://graph.facebook.com/me/friends?access_token=' + token)            
             jsl = json.loads(req.text)
-            nama = jsl["name"]
             simpan_id = open("id.txt", "w")
             for ival in jsl['data']:
                 id_konco.append(ival['id'])
@@ -142,6 +141,9 @@ def id_teman():
             print
             print a+"\n  ID Tersimpan " + p + "(" + pu + "id.txt" + p + ")" 
             print 
+            iqbal = requests.get("https://graph.facebook.com/me?access_token=" + token)
+            dev = json.loads(iqbal.text)
+            nama = dev["name"]
             print (h+" [ "+p+"Lanjutkan " + pu + nama +h+" ]\n")
             raw_input(k+ " => ")
             
