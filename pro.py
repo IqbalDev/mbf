@@ -219,12 +219,12 @@ def iqbaldevmbf():
                 break
                 
             elif "access_token" in jsl:
-                dados1.append(h+" [OK] " + pu + user + " | " + a + password "\n")
+                dados1.append(h+" [OK] " + pu + user + " | " + a + password + "\n")
                 count += 1
                 
            
             elif "www.facebook.com" in jsl["error_msg"]:
-                gagal.append(m+" [CP] " + d + user + " | " + m + password "\n")
+                gagal.append(m+" [CP] " + d + user + " | " + m + password + "\n")
                 count += 1
                 
             else:
