@@ -202,6 +202,12 @@ def mbf():
             print
             print d+ " Keluar Dari Program"
             sys.exit()
+        
+        except KeyError: 
+            print
+            print m+" Terjadi Error Mungkin Akun Kena Cekpoint"
+            os.system("rm -f token.txt")
+            print
             
 def iqbaldevmbf():
     
